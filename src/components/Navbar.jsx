@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Shield, ChevronDown, Menu, X, Sun, Moon } from "lucide-react";
+import { Shield, ChevronDown, Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import LanguageSelector from "./Language";
+import dayLogo from "./logo/dayLogo.png";
+import nightLogo from "./logo/nightLogo.png";
 
 const Navbar = () => {
   const [featuresOpen, setFeaturesOpen] = useState(false);
@@ -21,7 +25,6 @@ const Navbar = () => {
     "Create Support Ticket",
   ];
 
-  // Mobile-specific toggle functions (for click)
   const toggleFeatures = () => {
     setFeaturesOpen(!featuresOpen);
     if (resourcesOpen) setResourcesOpen(false);
@@ -41,7 +44,6 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark");
   };
 
-  // Check system preference on initial load
   useEffect(() => {
     if (
       window.matchMedia &&
@@ -52,40 +54,120 @@ const Navbar = () => {
     }
   }, []);
 
+
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -10, height: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      height: "auto",
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+        duration: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      height: 0,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+        duration: 0.4,
+      },
+    },
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
+  const logoVariants = {
+    initial: { rotate: 0 },
+    hover: {
+      rotate: 360,
+      scale: 1.1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: {
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+    tap: { scale: 0.95 },
+  };
+
+  const navItemVariants = {
+    hover: {
+      y: -2,
+      color: darkMode ? "#34d399" : "#10b981",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+  };
+
   return (
     <nav
       className={`${
         darkMode ? "dark bg-gray-900" : "bg-white"
-      } shadow-sm py-4 transition-colors duration-300`}
+      } shadow-sm py-4 transition-colors duration-300 fixed top-0 left-0 right-0 z-50`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              {darkMode ? (
-                <div className="h-8 w-8 bg-green-400 rounded-full flex items-center justify-center">
-                  <Moon size={16} className="text-gray-900" />
-                </div>
-              ) : (
-                <div className="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <Sun size={16} className="text-white" />
-                </div>
-              )}
-            </div>
-            <span
-              className={`ml-2 text-xl font-semibold ${
-                darkMode ? "text-white" : "text-gray-800"
-              }`}
+            <motion.div
+              className="flex-shrink-0"
+              variants={logoVariants}
+              initial="initial"
+              whileHover="hover"
             >
-              wap!kon
-            </span>
+
+              <img
+                src={darkMode ? dayLogo : nightLogo}
+                alt="wap!kon logo"
+                className="h-8 w-auto"
+              />
+            </motion.div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-10">
+
+          <div className="hidden md:flex md:items-center md:space-x-8">
             <div className="relative group">
-              <button
+              <motion.button
+                variants={navItemVariants}
+                whileHover="hover"
                 className={`${
                   darkMode
                     ? "text-gray-300 hover:text-green-400"
@@ -93,15 +175,24 @@ const Navbar = () => {
                 } flex items-center`}
               >
                 Features
-                <ChevronDown size={16} className="ml-1" />
-              </button>
-              <div
+                <motion.div
+                  animate={{ rotate: featuresOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={16} className="ml-1" />
+                </motion.div>
+              </motion.button>
+              <motion.div
                 className={`absolute -left-16 z-10 mt-2 w-64 ${
                   darkMode ? "bg-gray-800" : "bg-white"
-                } rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300`}
+                } rounded-md shadow-lg py-1 transition-all duration-300`}
+                initial="hidden"
+                whileHover="visible"
+                exit="exit"
+                variants={dropdownVariants}
               >
                 {featureItems.map((item, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href="#"
                     className={`block px-6 py-1 text-base ${
@@ -109,14 +200,20 @@ const Navbar = () => {
                         ? "text-gray-300 hover:text-green-400"
                         : "text-gray-800 hover:text-green-500"
                     }`}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    whileHover={{ x: 5 }}
                   >
                     {item}
-                  </a>
+                  </motion.a>
                 ))}
-              </div>
+              </motion.div>
             </div>
-            <a
+            <motion.a
               href="#"
+              variants={navItemVariants}
+              whileHover="hover"
               className={`${
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
@@ -124,9 +221,11 @@ const Navbar = () => {
               }`}
             >
               Pricing
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#"
+              variants={navItemVariants}
+              whileHover="hover"
               className={`${
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
@@ -134,9 +233,11 @@ const Navbar = () => {
               }`}
             >
               Contact
-            </a>
+            </motion.a>
             <div className="relative group">
-              <button
+              <motion.button
+                variants={navItemVariants}
+                whileHover="hover"
                 className={`${
                   darkMode
                     ? "text-gray-300 hover:text-green-400"
@@ -144,15 +245,24 @@ const Navbar = () => {
                 } flex items-center`}
               >
                 Resources
-                <ChevronDown size={16} className="ml-1" />
-              </button>
-              <div
+                <motion.div
+                  animate={{ rotate: resourcesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={16} className="ml-1" />
+                </motion.div>
+              </motion.button>
+              <motion.div
                 className={`absolute z-10 mt-2 -left-16 w-64 ${
                   darkMode ? "bg-gray-800" : "bg-white"
-                } rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300`}
+                } rounded-md shadow-lg py-1 transition-all duration-300`}
+                initial="hidden"
+                whileHover="visible"
+                exit="exit"
+                variants={dropdownVariants}
               >
                 {resourceItems.map((item, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href="#"
                     className={`block px-6 py-1 - text-base ${
@@ -160,18 +270,26 @@ const Navbar = () => {
                         ? "text-gray-300 hover:text-green-400"
                         : "text-gray-800 hover:text-green-500"
                     }`}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    whileHover={{ x: 5 }}
                   >
                     {item}
-                  </a>
+                  </motion.a>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
 
-          {/* Right Side Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <a
+
+            <LanguageSelector isDarkMode={darkMode} />
+
+            <motion.a
               href="#"
+              variants={navItemVariants}
+              whileHover="hover"
               className={`${
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
@@ -180,9 +298,13 @@ const Navbar = () => {
             >
               <Shield size={16} className="mr-1" />
               Free Sign Up
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#"
+              variants={buttonVariants}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
               className={`${
                 darkMode
                   ? "bg-green-600 hover:bg-green-700"
@@ -190,159 +312,252 @@ const Navbar = () => {
               } text-white px-4 py-2 rounded-md`}
             >
               Dashboard
-            </a>
-            <button
+            </motion.a>
+            <motion.button
               onClick={toggleDarkMode}
+              variants={buttonVariants}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
               className={`p-2 rounded-full ${
                 darkMode
                   ? "bg-gray-800 text-yellow-300"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+              <motion.div
+                initial={{ rotate: 0 }}
+                animate={{ rotate: darkMode ? 180 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.div>
+            </motion.button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <button
+  
+            <LanguageSelector isDarkMode={darkMode} isMobile={true} />
+
+            <motion.button
               onClick={toggleDarkMode}
+              variants={buttonVariants}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
               className={`p-2 rounded-full ${
                 darkMode
                   ? "bg-gray-800 text-yellow-300"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
+              <motion.div
+                initial={{ rotate: 0 }}
+                animate={{ rotate: darkMode ? 180 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.div>
+            </motion.button>
+            <motion.button
               onClick={toggleMobileMenu}
+              variants={buttonVariants}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
               className={`${
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
                   : "text-gray-500 hover:text-green-500"
               } focus:outline-none`}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <AnimatePresence mode="wait">
+                {mobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div
-          className={`md:hidden mt-2 px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
-            darkMode ? "bg-gray-900" : "bg-white"
-          }`}
-        >
-          <div className="block">
-            <button
-              onClick={toggleFeatures}
-              className={`w-full text-left px-3 py-2 ${
-                darkMode ? "text-gray-300" : "text-gray-600"
-              } flex items-center justify-between`}
-            >
-              <span>Features</span>
-              <ChevronDown
-                size={16}
-                className={`ml-1 transform ${
-                  featuresOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {featuresOpen && (
-              <div className="pl-4 mt-1 space-y-1">
-                {featureItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className={`block px-3 py-2 text-base ${
-                      darkMode
-                        ? "text-gray-400 hover:text-green-400"
-                        : "text-gray-800 hover:text-green-500"
-                    }`}
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
+            className={`md:hidden mt-2 px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
+              darkMode ? "bg-gray-900" : "bg-white"
+            }`}
+          >
+            <div className="block">
+              <motion.button
+                onClick={toggleFeatures}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full text-left px-3 py-2 ${
+                  darkMode ? "text-gray-300" : "text-gray-600"
+                } flex items-center justify-between`}
+              >
+                <span>Features</span>
+                <motion.div
+                  animate={{ rotate: featuresOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={16} className="ml-1" />
+                </motion.div>
+              </motion.button>
+              <AnimatePresence>
+                {featuresOpen && (
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={dropdownVariants}
+                    className="pl-4 mt-1 space-y-1"
                   >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-          <a
-            href="#"
-            className={`block px-3 py-2 ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Pricing
-          </a>
-          <a
-            href="#"
-            className={`block px-3 py-2 ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Contact
-          </a>
-          <div className="block">
-            <button
-              onClick={toggleResources}
-              className={`w-full text-left px-3 py-2 ${
-                darkMode ? "text-gray-300" : "text-gray-600"
-              } flex items-center justify-between`}
-            >
-              <span>Resources</span>
-              <ChevronDown
-                size={16}
-                className={`ml-1 transform ${
-                  resourcesOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {resourcesOpen && (
-              <div className="pl-4 mt-1 space-y-1">
-                {resourceItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className={`block px-3 py-2 text-base ${
-                      darkMode
-                        ? "text-gray-400 hover:text-green-400"
-                        : "text-gray-800 hover:text-green-500"
-                    }`}
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-          <div
-            className={`pt-4 border-t ${
-              darkMode ? "border-gray-700" : "border-gray-200"
-            }`}
-          >
-            <a
+                    {featureItems.map((item, index) => (
+                      <motion.a
+                        key={index}
+                        href="#"
+                        className={`block px-3 py-2 text-base ${
+                          darkMode
+                            ? "text-gray-400 hover:text-green-400"
+                            : "text-gray-800 hover:text-green-500"
+                        }`}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {item}
+                      </motion.a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <motion.a
               href="#"
+              whileHover={{ x: 5 }}
+              whileTap={{ scale: 0.98 }}
               className={`block px-3 py-2 ${
                 darkMode ? "text-gray-300" : "text-gray-600"
-              } flex items-center`}
+              }`}
             >
-              <Shield size={16} className="mr-1" />
-              Free Sign Up
-            </a>
-            <a
+              Pricing
+            </motion.a>
+            <motion.a
               href="#"
-              className={`block px-3 py-2 mt-1 ${
-                darkMode ? "bg-green-600" : "bg-green-500"
-              } text-white rounded-md text-center`}
+              whileHover={{ x: 5 }}
+              whileTap={{ scale: 0.98 }}
+              className={`block px-3 py-2 ${
+                darkMode ? "text-gray-300" : "text-gray-600"
+              }`}
             >
-              Dashboard
-            </a>
-          </div>
-        </div>
-      )}
+              Contact
+            </motion.a>
+            <div className="block">
+              <motion.button
+                onClick={toggleResources}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full text-left px-3 py-2 ${
+                  darkMode ? "text-gray-300" : "text-gray-600"
+                } flex items-center justify-between`}
+              >
+                <span>Resources</span>
+                <motion.div
+                  animate={{ rotate: resourcesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={16} className="ml-1" />
+                </motion.div>
+              </motion.button>
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={dropdownVariants}
+                    className="pl-4 mt-1 space-y-1"
+                  >
+                    {resourceItems.map((item, index) => (
+                      <motion.a
+                        key={index}
+                        href="#"
+                        className={`block px-3 py-2 text-base ${
+                          darkMode
+                            ? "text-gray-400 hover:text-green-400"
+                            : "text-gray-800 hover:text-green-500"
+                        }`}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {item}
+                      </motion.a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
+              className={`pt-4 border-t ${
+                darkMode ? "border-gray-700" : "border-gray-200"
+              }`}
+            >
+              <motion.a
+                href="#"
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.98 }}
+                className={`block px-3 py-2 ${
+                  darkMode ? "text-gray-300" : "text-gray-600"
+                } flex items-center`}
+              >
+                <Shield size={16} className="mr-1" />
+                Free Sign Up
+              </motion.a>
+              <motion.a
+                href="#"
+                variants={buttonVariants}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                className={`block px-3 py-2 mt-1 ${
+                  darkMode ? "bg-green-600" : "bg-green-500"
+                } text-white rounded-md text-center`}
+              >
+                Dashboard
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
