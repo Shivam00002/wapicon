@@ -11,8 +11,17 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
     { name: "English", code: "en" },
     { name: "हिन्दी (Hindi)", code: "hi" },
     { name: "العربية (Arabic)", code: "ar" },
+    { name: "ਪੰਜਾਬੀ (Punjabi)", code: "pa" },
+    { name: "ગુજરાતી (Gujarati)", code: "gu" },
+    { name: "मराठी (Marathi)", code: "mr" },
+    { name: "తెలుగు (Telugu)", code: "te" },
+    { name: "Español (Spanish)", code: "es" },
+    { name: "Français (French)", code: "fr" },
+    { name: "Русский (Russian)", code: "ru" },
+    { name: "Deutsch (German)", code: "de" },
   ];
-
+  
+  
   useEffect(() => {
     setMounted(true);
 
@@ -29,7 +38,7 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
         new window.google.translate.TranslateElement(
           {
             pageLanguage: "en",
-            includedLanguages: "en,hi,ar",
+            includedLanguages: "en,hi,ar,pa,gu,mr,te,es,fr,ru,de",
             autoDisplay: false,
           },
           "google_translate_element"
