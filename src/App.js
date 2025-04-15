@@ -10,6 +10,7 @@ import CRMChatbox from './components/ClientSupport';
 import ECommerceWhatsApp from './components/ECommerce';
 import FlowsForms from './components/FormsWtsp';
 import WhatsAppAds from './components/WhatsAppAds';
+import CatalogsPayments from './components/CatalogsPayments';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <ECommerceWhatsApp />
       <FlowsForms />
       <WhatsAppAds />
+      <CatalogsPayments/>
     </>
   );
 }
