@@ -13,6 +13,13 @@ import WhatsAppAds from './components/WhatsAppAds';
 import CatalogsPayments from './components/CatalogsPayments';
 import WhatsAppApiUI from './components/Enterprise';
 import GreenTick from './components/GreenTick';
+import DashboardImg from './components/WhatsDashboard';
+import FeatureCards from './components/FeatureCards';
+import GetStart from './components/GetStart';
+import FeatureGrid from './components/Feachers';
+import PricingHeader from './components/Simple';
+import PricingPlans from './components/PricePlans';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -30,7 +37,15 @@ function App() {
       <CatalogsPayments />
       <WhatsAppApiUI />
       <GreenTick />
+      <DashboardImg />
+      <FeatureCards />
+      <GetStart />
+      <FeatureGrid/>
+      <PricingHeader/>
+      <PricingPlans/>
+      <Footer/>
     </>
+
   );
 }
 
