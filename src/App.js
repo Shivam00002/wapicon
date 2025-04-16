@@ -11,6 +11,8 @@ import ECommerceWhatsApp from './components/ECommerce';
 import FlowsForms from './components/FormsWtsp';
 import WhatsAppAds from './components/WhatsAppAds';
 import CatalogsPayments from './components/CatalogsPayments';
+import WhatsAppApiUI from './components/Enterprise';
+import GreenTick from './components/GreenTick';
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
       <ECommerceWhatsApp />
       <FlowsForms />
       <WhatsAppAds />
-      <CatalogsPayments/>
+      <CatalogsPayments />
+      <WhatsAppApiUI />
+      <GreenTick />
     </>
   );
 }
