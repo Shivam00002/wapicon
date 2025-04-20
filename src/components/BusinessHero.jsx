@@ -26,28 +26,28 @@ const WhatsAppBusinessHero = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#E9F7EE] mt-8 dark:bg-gray-900 transition-colors duration-300">
-      <div className="container  mx-auto px-4 py-12 md:py-14 lg:py-18">
+    <div className="min-h-screen w-full bg-[#E9F7EE] mt-8 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
+      <div className="container mx-auto px-4 py-12 md:py-14 lg:py-18">
         <div className="flex flex-col lg:flex-row items-center">
           <motion.div
-            className="w-full lg:w-1/2 mb-10 lg:mb-0"
+            className="w-full lg:w-1/2 mb-10 lg:mb-0 px-1 sm:px-4"
             initial="hidden"
             animate="visible"
             variants={staggerChildren}
           >
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 shadow-sm mb-6"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white dark:bg-gray-800 shadow-sm mb-6"
             >
-              <MessageSquare className="text-green-500" size={20} />
-              <span className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-200">
+              <MessageSquare className="text-green-500" size={18} />
+              <span className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-200 whitespace-normal sm:whitespace-nowrap">
                 Official WhatsApp Solution Provider
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-800 dark:text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-800 dark:text-white leading-tight"
             >
               Enterprise-Grade
               <span className="text-green-500 block"> WhatsApp Business</span>
@@ -113,7 +113,7 @@ const WhatsAppBusinessHero = () => {
               <img
                 src="https://www.360dialog.com/wp-content/uploads/2023/07/WhatsApp-Business-API-enterprise-solution.svg"
                 alt="WhatsApp Business API Enterprise Solution"
-                className="w-full h-auto max-w-xl md:max-w-2xl lg:max-w-full xl:max-w-3xl mx-auto object-contain"
+                className="w-full h-auto max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-full xl:max-w-3xl mx-auto object-contain"
                 style={{ maxHeight: "85vh" }}
               />
             </motion.div>

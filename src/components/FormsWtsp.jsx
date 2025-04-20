@@ -22,9 +22,9 @@ const FlowsForms = () => {
   const descriptionOpacity = useTransform(scrollY, [0, 100, 200], [0.7, 1, 1]);
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans overflow-hidden">
+    <div className="min-h-screen w-full bg-white dark:bg-gray-900 py-6 sm:py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-12">
           <div className="w-full lg:w-5/12 pb-8 lg:pb-0">
             <motion.div
               style={{
@@ -43,6 +43,7 @@ const FlowsForms = () => {
                 transition: { duration: 3, repeat: Infinity },
               }}
               viewport={{ once: false, amount: 0.3 }}
+              className="px-2 sm:px-0"
             >
               <img
                 src="https://wapikon.com/wp-content/uploads/2025/02/Untitled-design-2025-02-12T011308.059.png"
@@ -54,7 +55,7 @@ const FlowsForms = () => {
 
           <div className="w-full lg:w-7/12">
             <motion.div
-              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full mb-5"
+              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-5"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -71,7 +72,7 @@ const FlowsForms = () => {
             </motion.div>
 
             <motion.h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight"
               style={{ y: headingY }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -81,7 +82,7 @@ const FlowsForms = () => {
             </motion.h1>
 
             <motion.h2
-              className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-5"
+              className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 sm:mb-5"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -92,14 +93,14 @@ const FlowsForms = () => {
 
             <motion.div
               ref={descriptionRef}
-              className="mb-8"
+              className="mb-6 sm:mb-8"
               style={{ opacity: descriptionOpacity }}
               animate={{
                 opacity: descriptionInView ? 1 : 0.7,
                 transition: { duration: 0.5 },
               }}
             >
-              <motion.p className="text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              <motion.p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                 Wapikon's{" "}
                 <span className="font-semibold">Native Flow and Forms</span>{" "}
                 feature enables businesses to create interactive workflows and
@@ -108,10 +109,10 @@ const FlowsForms = () => {
               </motion.p>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <motion.div
                 ref={feature1Ref}
-                className="flex items-start gap-4"
+                className="flex items-start gap-3 sm:gap-4"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
                   opacity: feature1InView ? 1 : 0.5,
@@ -123,10 +124,10 @@ const FlowsForms = () => {
                   <Check className="text-green-500 h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
                     Effortless Integration and Automation
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                     Built directly into WhatsApp, Wapikon's Native Flows and
                     Forms streamline customer interactions with intuitive
                     workflows and automated tasks like lead collection, support
@@ -138,7 +139,7 @@ const FlowsForms = () => {
 
               <motion.div
                 ref={feature2Ref}
-                className="flex items-start gap-4"
+                className="flex items-start gap-3 sm:gap-4"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
                   opacity: feature2InView ? 1 : 0.5,
@@ -150,10 +151,10 @@ const FlowsForms = () => {
                   <Check className="text-green-500 h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
                     Personalized Engagement and Data Management
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                     Create custom forms for surveys, registrations, or feedback,
                     and tailor workflows to individual customer needs. Connect
                     seamlessly with your CRM and other business tools to

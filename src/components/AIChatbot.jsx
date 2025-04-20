@@ -16,6 +16,7 @@ const AIChatbotWhatsApp = () => {
   const feature1InView = useInView(feature1Ref, { once: false, amount: 0.3 });
   const feature2InView = useInView(feature2Ref, { once: false, amount: 0.3 });
 
+
   const imageY = useTransform(scrollY, [0, 300], [0, -30]);
   const imageScale = useTransform(scrollY, [0, 300], [1, 1.05]);
   const headingY = useTransform(scrollY, [0, 300], [0, -15]);
@@ -45,7 +46,7 @@ const AIChatbotWhatsApp = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
               style={{ y: headingY }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -193,7 +194,7 @@ const AIChatbotWhatsApp = () => {
                 transition: { duration: 3, repeat: Infinity },
               }}
               viewport={{ once: false, amount: 0.3 }}
-              className="w-full max-w-lg"
+              className="w-full max-w-lg px-4 sm:px-0"
             >
               <img
                 src="https://wapikon.com/wp-content/uploads/2025/02/Untitled-design-2025-02-12T010120.521.png"

@@ -34,7 +34,7 @@ const ChatbotBuilder = () => {
         <div className="flex flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 pl-0 lg:pl-8">
             <motion.div
-              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6"
               style={{ x: badgeX }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -51,14 +51,14 @@ const ChatbotBuilder = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5 overflow-hidden"
+              className="text-3xl sm:text-3xl md:px-0 px-2 md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-5 overflow-hidden leading-tight"
               style={{ x: headingX }}
             >
               {headingLetters}
             </motion.h1>
 
             <motion.p
-              className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
+              className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed"
               style={{ x: descriptionX }}
               initial={{ opacity: 0 }}
               animate={{
@@ -86,7 +86,7 @@ const ChatbotBuilder = () => {
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed"
+              className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, duration: 0.8 }}
@@ -96,7 +96,7 @@ const ChatbotBuilder = () => {
               <span className="font-semibold">No-Code Chatbot Builder</span>
             </motion.p>
 
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-10">
               <motion.div
                 variants={featureVariants}
                 initial="hidden"
@@ -105,7 +105,7 @@ const ChatbotBuilder = () => {
                 style={{ scale: featureScale }}
               >
                 <motion.h2
-                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4 mt-2"
+                  className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 mt-2"
                   whileInView={{
                     textShadow: [
                       "0px 0px 0px rgba(0,0,0,0)",
@@ -121,7 +121,7 @@ const ChatbotBuilder = () => {
                 >
                   Effortless Setup
                 </motion.h2>
-                <div className="flex items-start gap-3 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                <div className="flex items-start gap-3 bg-green-50 dark:bg-green-900/20 p-3 sm:p-4 rounded-lg">
                   <motion.div
                     whileHover={{ scale: 1.3, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
@@ -130,7 +130,7 @@ const ChatbotBuilder = () => {
                     <Check className="text-green-500 flex-shrink-0" size={24} />
                   </motion.div>
                   <motion.p
-                    className="text-gray-600 dark:text-gray-400"
+                    className="text-gray-600 dark:text-gray-400 text-sm sm:text-base"
                     initial={{ opacity: 0.5 }}
                     whileInView={{ opacity: 1 }}
                   >
@@ -149,7 +149,7 @@ const ChatbotBuilder = () => {
                 style={{ scale: featureScale }}
               >
                 <motion.h2
-                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4"
+                  className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4"
                   whileInView={{
                     textShadow: [
                       "0px 0px 0px rgba(0,0,0,0)",
@@ -165,7 +165,7 @@ const ChatbotBuilder = () => {
                 >
                   Seamless Integration
                 </motion.h2>
-                <div className="flex items-start gap-3 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                <div className="flex items-start gap-3 bg-green-50 dark:bg-green-900/20 p-3 sm:p-4 rounded-lg">
                   <motion.div
                     whileHover={{ scale: 1.3, rotate: -5 }}
                     whileTap={{ scale: 0.9 }}
@@ -174,7 +174,7 @@ const ChatbotBuilder = () => {
                     <Check className="text-green-500 flex-shrink-0" size={24} />
                   </motion.div>
                   <motion.p
-                    className="text-gray-600 dark:text-gray-400"
+                    className="text-gray-600 dark:text-gray-400 text-sm sm:text-base"
                     initial={{ opacity: 0.5 }}
                     whileInView={{ opacity: 1 }}
                   >
@@ -201,7 +201,7 @@ const ChatbotBuilder = () => {
                 stiffness: 100,
                 delay: 0.3,
               }}
-              className="w-full max-w-xl"
+              className="w-full max-w-md sm:max-w-lg md:max-w-xl px-2 sm:px-0"
               whileHover={{
                 scale: 1.03,
                 transition: { duration: 0.3 },

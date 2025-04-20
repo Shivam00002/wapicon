@@ -52,9 +52,16 @@ const Navbar = () => {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
     }
-  }, []);
 
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
 
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
 
   const dropdownVariants = {
     hidden: { opacity: 0, y: -10, height: 0 },
@@ -141,11 +148,10 @@ const Navbar = () => {
     <nav
       className={`${
         darkMode ? "dark bg-gray-900" : "bg-white"
-      } shadow-sm py-4 transition-colors duration-300 fixed top-0 left-0 right-0 z-50`}
+      } shadow-sm py-3 md:py-4 transition-colors duration-300 fixed top-0 left-0 right-0 z-50 w-full`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
         <div className="flex justify-between items-center">
-
           <div className="flex items-center">
             <motion.div
               className="flex-shrink-0"
@@ -153,17 +159,15 @@ const Navbar = () => {
               initial="initial"
               whileHover="hover"
             >
-
               <img
                 src={darkMode ? dayLogo : nightLogo}
                 alt="wap!kon logo"
-                className="h-8 w-auto"
+                className="h-7 md:h-8 w-auto"
               />
             </motion.div>
           </div>
 
-
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
             <div className="relative group">
               <motion.button
                 variants={navItemVariants}
@@ -172,7 +176,7 @@ const Navbar = () => {
                   darkMode
                     ? "text-gray-300 hover:text-green-400"
                     : "text-gray-600 hover:text-green-500"
-                } flex items-center`}
+                } flex items-center text-sm lg:text-base`}
               >
                 Features
                 <motion.div
@@ -183,7 +187,7 @@ const Navbar = () => {
                 </motion.div>
               </motion.button>
               <motion.div
-                className={`absolute -left-16 z-10 mt-2 w-64 ${
+                className={`absolute -left-4 md:-left-16 z-10 mt-2 w-48 md:w-64 ${
                   darkMode ? "bg-gray-800" : "bg-white"
                 } rounded-md shadow-lg py-1 transition-all duration-300`}
                 initial="hidden"
@@ -195,7 +199,7 @@ const Navbar = () => {
                   <motion.a
                     key={index}
                     href="#"
-                    className={`block px-6 py-1 text-base ${
+                    className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
                       darkMode
                         ? "text-gray-300 hover:text-green-400"
                         : "text-gray-800 hover:text-green-500"
@@ -218,7 +222,7 @@ const Navbar = () => {
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
                   : "text-gray-600 hover:text-green-500"
-              }`}
+              } text-sm lg:text-base`}
             >
               Pricing
             </motion.a>
@@ -230,7 +234,7 @@ const Navbar = () => {
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
                   : "text-gray-600 hover:text-green-500"
-              }`}
+              } text-sm lg:text-base`}
             >
               Contact
             </motion.a>
@@ -242,7 +246,7 @@ const Navbar = () => {
                   darkMode
                     ? "text-gray-300 hover:text-green-400"
                     : "text-gray-600 hover:text-green-500"
-                } flex items-center`}
+                } flex items-center text-sm lg:text-base`}
               >
                 Resources
                 <motion.div
@@ -253,7 +257,7 @@ const Navbar = () => {
                 </motion.div>
               </motion.button>
               <motion.div
-                className={`absolute z-10 mt-2 -left-16 w-64 ${
+                className={`absolute z-10 mt-2 -left-8 md:-left-16 w-48 md:w-64 ${
                   darkMode ? "bg-gray-800" : "bg-white"
                 } rounded-md shadow-lg py-1 transition-all duration-300`}
                 initial="hidden"
@@ -265,7 +269,7 @@ const Navbar = () => {
                   <motion.a
                     key={index}
                     href="#"
-                    className={`block px-6 py-1 - text-base ${
+                    className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
                       darkMode
                         ? "text-gray-300 hover:text-green-400"
                         : "text-gray-800 hover:text-green-500"
@@ -282,8 +286,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             <LanguageSelector isDarkMode={darkMode} />
 
             <motion.a
@@ -294,7 +297,7 @@ const Navbar = () => {
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
                   : "text-gray-600 hover:text-green-500"
-              } flex items-center`}
+              } flex items-center text-sm lg:text-base whitespace-nowrap`}
             >
               <Shield size={16} className="mr-1" />
               Free Sign Up
@@ -309,7 +312,7 @@ const Navbar = () => {
                 darkMode
                   ? "bg-green-600 hover:bg-green-700"
                   : "bg-green-500 hover:bg-green-600"
-              } text-white px-4 py-2 rounded-md`}
+              } text-white px-3 lg:px-4 py-2 rounded-md text-sm lg:text-base`}
             >
               Dashboard
             </motion.a>
@@ -336,7 +339,6 @@ const Navbar = () => {
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
-  
             <LanguageSelector isDarkMode={darkMode} isMobile={true} />
 
             <motion.button
@@ -399,7 +401,6 @@ const Navbar = () => {
         </div>
       </div>
 
-
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -409,7 +410,7 @@ const Navbar = () => {
             variants={mobileMenuVariants}
             className={`md:hidden mt-2 px-2 pt-2 pb-3 space-y-1 sm:px-3 ${
               darkMode ? "bg-gray-900" : "bg-white"
-            }`}
+            } overflow-y-auto max-h-[calc(100vh-4rem)] shadow-lg`}
           >
             <div className="block">
               <motion.button

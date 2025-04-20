@@ -40,10 +40,10 @@ function App() {
       <DashboardImg />
       <FeatureCards />
       <GetStart />
-      <FeatureGrid/>
-      <PricingHeader/>
-      <PricingPlans/>
-      <Footer/>
+      <FeatureGrid />
+      <PricingHeader />
+      <PricingPlans />
+      <Footer />
     </>
 
   );

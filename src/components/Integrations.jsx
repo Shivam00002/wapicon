@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const IntegrationsGrid = () => {
@@ -78,7 +78,6 @@ const IntegrationsGrid = () => {
       textColor: "text-white",
     },
 
-    // Row 2
     {
       name: "Open AI",
       imgUrl:
@@ -154,7 +153,6 @@ const IntegrationsGrid = () => {
       textColor: "text-white",
     },
 
-    // Row 3
     {
       name: "toyyibPay",
       imgUrl: "https://toyyibpay.com/assets/img/logo/toyyibpay-logo.png",
@@ -226,83 +224,30 @@ const IntegrationsGrid = () => {
       bgColor: "bg-green-600",
       textColor: "text-white",
     },
-
-    // Row 4
-    {
-      name: "Razorpay",
-      imgUrl:
-        "https://cdn.iconscout.com/icon/free/png-256/free-razorpay-1649771-1399875.png",
-      bgColor: "bg-blue-700",
-      textColor: "text-white",
-    },
-    {
-      name: "SenangPay",
-      imgUrl: "https://senangpay.my/wp-content/uploads/2017/12/Logo1-1.png",
-      bgColor: "bg-blue-500",
-      textColor: "text-white",
-    },
-    {
-      name: "Stripe",
-      imgUrl: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg",
-      bgColor: "bg-indigo-500",
-      textColor: "text-white",
-    },
-    {
-      name: "PhonePe",
-      imgUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/PhonePe_Logo.png/1200px-PhonePe_Logo.png",
-      bgColor: "bg-purple-700",
-      textColor: "text-white",
-    },
-    {
-      name: "Nexmo (Vonage)",
-      imgUrl:
-        "https://seeklogo.com/images/V/vonage-nexmo-logo-6E7F0D1219-seeklogo.com.png",
-      bgColor: "bg-blue-500",
-      textColor: "text-white",
-    },
-    {
-      name: "Afric Talking",
-      imgUrl: "https://africas-talking.com/assets/img/AT%20Logo.svg",
-      bgColor: "bg-orange-600",
-      textColor: "text-white",
-    },
-    {
-      name: "Plivo",
-      imgUrl: "https://www.codesansar.com/storage/app/media/plivo-1200.png",
-      bgColor: "bg-green-600",
-      textColor: "text-white",
-    },
-    {
-      name: "Square",
-      imgUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Square%2C_Inc._logo.svg/1200px-Square%2C_Inc._logo.svg.png",
-      bgColor: "bg-green-500",
-      textColor: "text-white",
-    },
-    {
-      name: "Twilio",
-      imgUrl: "https://www.vectorlogo.zone/logos/twilio/twilio-ar21.png",
-      bgColor: "bg-red-500",
-      textColor: "text-white",
-    },
-    {
-      name: "Google Cloud",
-      imgUrl:
-        "https://cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
-      bgColor: "bg-blue-500",
-      textColor: "text-white",
-    },
-    {
-      name: "Jira",
-      imgUrl:
-        "https://cdn.icon-icons.com/icons2/2699/PNG/512/atlassian_jira_logo_icon_170511.png",
-      bgColor: "bg-blue-700",
-      textColor: "text-white",
-    },
   ];
 
+  const [visibleCount, setVisibleCount] = useState(12);
   const [imageLoadStatus, setImageLoadStatus] = useState({});
+  const [gridCols, setGridCols] = useState("grid-cols-3");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setGridCols("grid-cols-3");
+      } else if (window.innerWidth < 768) {
+        setGridCols("grid-cols-4");
+      } else if (window.innerWidth < 1024) {
+        setGridCols("grid-cols-6");
+      } else {
+        setGridCols("grid-cols-6 xl:grid-cols-8");
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleImageLoad = (index) => {
     setImageLoadStatus((prev) => ({
@@ -323,7 +268,7 @@ const IntegrationsGrid = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.03,
       },
     },
   };
@@ -366,22 +311,28 @@ const IntegrationsGrid = () => {
       .toUpperCase();
   };
 
+  const loadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 12, integrations.length));
+  };
+
+  const visibleIntegrations = integrations.slice(0, visibleCount);
+
   return (
-    <div className="w-full  max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-2">
-      <h1 className="text-3xl font-bold text-center mb-10 text-gray-800 dark:text-white">
+    <div className="w-full max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:py-10">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-10 text-gray-800 dark:text-white">
         Wapikon's Top Integrations
-      </h1>
+      </h2>
 
       <motion.div
-        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-11 gap-3"
+        className={`grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3`}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {integrations.map((integration, index) => (
+        {visibleIntegrations.map((integration, index) => (
           <motion.div
             key={index}
-            className="relative bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm flex flex-col items-center justify-center cursor-pointer border border-gray-200 dark:border-gray-700"
+            className="relative bg-white dark:bg-gray-800 p-2 sm:p-3 rounded-lg shadow-sm flex flex-col items-center justify-center cursor-pointer border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors"
             variants={itemVariants}
             whileHover="hover"
             animate="visible"
@@ -389,15 +340,16 @@ const IntegrationsGrid = () => {
             initial="hidden"
           >
             <motion.div
-              className="h-12 w-12 rounded-full flex items-center justify-center mb-2 overflow-hidden bg-gray-100 dark:bg-gray-700"
+              className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full flex items-center justify-center mb-1 sm:mb-2 overflow-hidden bg-gray-100 dark:bg-gray-700"
               variants={hoverVariants}
             >
               {imageLoadStatus[index] !== false ? (
-                <div className="relative w-8 h-8 flex items-center justify-center">
+                <div className="relative w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 flex items-center justify-center">
                   <img
                     src={integration.imgUrl}
                     alt={integration.name}
                     className="max-w-full max-h-full object-contain"
+                    loading="lazy"
                     onLoad={() => handleImageLoad(index)}
                     onError={() => handleImageError(index)}
                     style={{
@@ -407,7 +359,7 @@ const IntegrationsGrid = () => {
                   />
                   {imageLoadStatus[index] !== true && (
                     <div
-                      className={`w-8 h-8 rounded-full ${integration.bgColor} flex items-center justify-center`}
+                      className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full ${integration.bgColor} flex items-center justify-center`}
                     >
                       <span
                         className={`text-xs font-bold ${integration.textColor}`}
@@ -419,22 +371,35 @@ const IntegrationsGrid = () => {
                 </div>
               ) : (
                 <div
-                  className={`w-8 h-8 rounded-full ${integration.bgColor} flex items-center justify-center`}
+                  className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full ${integration.bgColor} flex items-center justify-center`}
                 >
                   <span
-                    className={`text-xs font-bold ${integration.textColor}`}
+                    className={`text-[10px] sm:text-xs font-bold ${integration.textColor}`}
                   >
                     {getInitials(integration.name)}
                   </span>
                 </div>
               )}
             </motion.div>
-            <span className="text-xs font-medium text-center text-gray-800 dark:text-gray-200 mt-1">
+            <span className="text-[10px] xs:text-xs sm:text-sm font-medium text-center text-gray-800 dark:text-gray-200 line-clamp-1">
               {integration.name}
             </span>
           </motion.div>
         ))}
       </motion.div>
+
+      {visibleCount < integrations.length && (
+        <div className="flex justify-center mt-6 sm:mt-8">
+          <motion.button
+            onClick={loadMore}
+            className="px-4 py-2 bg-green-500 text-white rounded-md shadow-sm hover:bg-green-600 transition-colors font-medium text-sm sm:text-base"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Load More
+          </motion.button>
+        </div>
+      )}
     </div>
   );
 };

@@ -16,23 +16,24 @@ const CatalogsPayments = () => {
   const feature1InView = useInView(feature1Ref, { once: false, amount: 0.3 });
   const feature2InView = useInView(feature2Ref, { once: false, amount: 0.3 });
 
-  const imageY = useTransform(scrollY, [0, 300], [0, -30]);
-  const imageScale = useTransform(scrollY, [0, 300], [1, 1.05]);
-  const headingY = useTransform(scrollY, [0, 300], [0, -15]);
-  const descriptionOpacity = useTransform(scrollY, [0, 100, 200], [0.5, 1, 1]);
-  const descriptionX = useTransform(scrollY, [0, 150], [-20, 0]);
+ 
+  const imageY = useTransform(scrollY, [0, 300], [0, -20]);
+  const imageScale = useTransform(scrollY, [0, 300], [1, 1.04]);
+  const headingY = useTransform(scrollY, [0, 300], [0, -10]);
+  const descriptionOpacity = useTransform(scrollY, [0, 100, 200], [0.6, 1, 1]);
+  const descriptionX = useTransform(scrollY, [0, 150], [-15, 0]);
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans overflow-hidden">
+    <div className="min-h-screen w-full bg-white dark:bg-gray-900 py-6 sm:py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center">
-          <div className="w-full lg:w-1/2 order-2 lg:order-1 mt-12 lg:mt-0 flex items-center justify-center">
+          <div className="w-full lg:w-1/2 order-2 lg:order-1 mt-8 lg:mt-0 flex items-center justify-center">
             <motion.div
               style={{
                 y: imageY,
                 scale: imageScale,
               }}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 1,
@@ -45,7 +46,7 @@ const CatalogsPayments = () => {
                 transition: { duration: 3, repeat: Infinity },
               }}
               viewport={{ once: false, amount: 0.3 }}
-              className="w-full max-w-lg mx-auto px-4 sm:px-8 lg:px-0"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto px-2 sm:px-4 lg:px-0"
             >
               <img
                 src="https://wapikon.com/wp-content/uploads/2025/01/Frame-37079-1.webp"
@@ -55,9 +56,9 @@ const CatalogsPayments = () => {
             </motion.div>
           </div>
 
-          <div className="w-full lg:w-1/2 pr-0 lg:pl-12 order-1 lg:order-2">
+          <div className="w-full lg:w-1/2 pr-0 lg:pl-6 xl:pl-12 order-1 lg:order-2">
             <motion.div
-              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center bg-gray-100 dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -74,7 +75,7 @@ const CatalogsPayments = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight"
               style={{ y: headingY }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -93,8 +94,8 @@ const CatalogsPayments = () => {
             </motion.h1>
 
             <motion.h2
-              className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-6"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
@@ -103,14 +104,14 @@ const CatalogsPayments = () => {
 
             <motion.p
               ref={descriptionRef}
-              className="text-lg text-gray-600 dark:text-gray-300 mb-12 leading-relaxed"
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-10 leading-relaxed"
               style={{
                 opacity: descriptionOpacity,
                 x: descriptionX,
               }}
               animate={{
-                x: descriptionInView ? 0 : -20,
-                opacity: descriptionInView ? 1 : 0.5,
+                x: descriptionInView ? 0 : -15,
+                opacity: descriptionInView ? 1 : 0.6,
                 transition: { duration: 0.5 },
               }}
             >
@@ -120,10 +121,10 @@ const CatalogsPayments = () => {
               within WhatsApp.
             </motion.p>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <motion.div
                 ref={feature1Ref}
-                className="flex items-start gap-4"
+                className="flex items-start gap-3 sm:gap-4"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{
                   opacity: feature1InView ? 1 : 0.5,
@@ -132,13 +133,13 @@ const CatalogsPayments = () => {
                 }}
               >
                 <div className="flex-shrink-0 mt-1">
-                  <Check className="text-green-500 h-5 w-5" />
+                  <Check className="text-green-500 h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
                     Showcase Products with Ease
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                     Use WhatsApp Catalogs to display your products, allowing
                     customers to browse and select effortlessly, enhancing
                     visibility and driving interest.
@@ -148,7 +149,7 @@ const CatalogsPayments = () => {
 
               <motion.div
                 ref={feature2Ref}
-                className="flex items-start gap-4"
+                className="flex items-start gap-3 sm:gap-4"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{
                   opacity: feature2InView ? 1 : 0.5,
@@ -157,13 +158,13 @@ const CatalogsPayments = () => {
                 }}
               >
                 <div className="flex-shrink-0 mt-1">
-                  <Check className="text-green-500 h-5 w-5" />
+                  <Check className="text-green-500 h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
                     Simplify Transactions and Boost Sales
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                     Provide a seamless shopping experience with secure native
                     WhatsApp payments, reducing cart abandonment and increasing
                     conversions—all within a single platform.

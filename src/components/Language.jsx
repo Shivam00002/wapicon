@@ -20,8 +20,7 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
     { name: "Русский (Russian)", code: "ru" },
     { name: "Deutsch (German)", code: "de" },
   ];
-  
-  
+
   useEffect(() => {
     setMounted(true);
 
@@ -61,15 +60,28 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
     };
 
     setTimeout(removeGoogleTranslateBar, 1000);
-  }, []);
 
-  const openDropdown = () => {
-    setIsOpen(true);
-  };
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest(".language-selector")) {
+        setIsOpen(false);
+      }
+    };
 
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    const handleEscapeKey = (event) => {
+      if (isOpen && event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isOpen]);
 
   const changeLanguage = (language) => {
     setSelectedLanguage(language.name);
@@ -105,36 +117,38 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
   return (
     <div className="language-selector relative">
       {isMobile ? (
-        <div
-          onMouseEnter={openDropdown}
-          onMouseLeave={closeDropdown}
-          className="relative"
-        >
+        <div className="relative">
           <button
+            onClick={() => setIsOpen(!isOpen)}
             className={`p-2 rounded-full ${
               isDarkMode
                 ? "bg-gray-800 text-gray-300"
                 : "bg-gray-100 text-gray-700"
-            }`}
+            } focus:outline-none`}
+            aria-label="Select language"
           >
             <Globe size={20} />
           </button>
         </div>
       ) : (
-        <div
-          onMouseEnter={openDropdown}
-          onMouseLeave={closeDropdown}
-          className="relative"
-        >
+        <div className="relative">
           <button
-            className={`flex items-center px-3 py-1 rounded-md border ${
+            onClick={() => setIsOpen(!isOpen)}
+            className={`flex items-center px-2 sm:px-3 py-1 rounded-md border ${
               isDarkMode
                 ? "border-gray-700 text-gray-300 hover:text-green-400"
                 : "border-gray-200 text-gray-600 hover:text-green-500"
-            }`}
+            } focus:outline-none`}
+            aria-expanded={isOpen}
+            aria-haspopup="true"
           >
             <Globe size={16} className="mr-1" />
-            <span className="mx-1">{selectedLanguage}</span>
+            <span className="mx-1 text-sm sm:text-base hidden sm:inline-block">
+              {selectedLanguage}
+            </span>
+            <span className="mx-1 text-sm sm:text-base inline-block sm:hidden">
+              Lang
+            </span>
             <ChevronDown
               size={14}
               className={`ml-1 transform transition-transform duration-300 ${
@@ -152,11 +166,9 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
             animate="visible"
             exit="exit"
             variants={dropdownVariants}
-            onMouseEnter={openDropdown}
-            onMouseLeave={closeDropdown}
-            className={`absolute right-0 z-20 mt-2 w-48 rounded-md shadow-lg overflow-hidden ${
+            className={`absolute right-0 z-20 mt-2 w-36 sm:w-48 rounded-md shadow-lg overflow-hidden ${
               isDarkMode ? "bg-gray-800" : "bg-white"
-            }`}
+            } max-h-60 sm:max-h-80 overflow-y-auto`}
             style={{
               border: isDarkMode ? "1px solid #374151" : "1px solid #e5e7eb",
             }}
@@ -166,7 +178,7 @@ const LanguageSelector = ({ isDarkMode, isMobile = false }) => {
                 <button
                   key={index}
                   onClick={() => changeLanguage(language)}
-                  className={`block w-full text-left px-4 py-2 text-sm transition-colors duration-200 ${
+                  className={`block w-full text-left px-3 sm:px-4 py-2 text-xs sm:text-sm transition-colors duration-200 ${
                     selectedLanguage === language.name
                       ? isDarkMode
                         ? "bg-gray-700 text-green-400"

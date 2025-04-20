@@ -68,12 +68,12 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
-      className="bg-green-900 dark:bg-green-950 text-white dark:text-gray-100 py-12 px-4 md:px-8"
+      className="bg-green-900 dark:bg-green-950 text-white dark:text-gray-100 py-8 sm:py-12 px-4 md:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-10">
           <motion.div variants={containerVariants} className="lg:col-span-1">
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-4 sm:space-y-6">
               <div className="flex items-center">
                 <motion.div
                   className="flex-shrink-0"
@@ -84,7 +84,7 @@ const Footer = () => {
                   <img
                     src={dayLogo}
                     alt="wap!kon logo"
-                    className="h-8 w-auto"
+                    className="h-7 sm:h-8 w-auto"
                   />
                 </motion.div>
               </div>
@@ -92,7 +92,7 @@ const Footer = () => {
               <motion.div
                 variants={logoVariants}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 p-3 rounded-md inline-block max-w-[200px]"
+                className="bg-white dark:bg-gray-800 p-2 sm:p-3 rounded-md inline-block max-w-[160px] sm:max-w-[200px]"
               >
                 <img
                   src="https://wapikon.com/wp-content/uploads/2022/04/MBP-Badge-Dark-backgrounds@1x.png"
@@ -109,7 +109,7 @@ const Footer = () => {
                 <img
                   src="https://wapikon.com/wp-content/uploads/2022/04/payment-icons.png"
                   alt="Payment Methods"
-                  className="h-10 object-contain"
+                  className="h-8 sm:h-10 object-contain"
                 />
               </motion.div>
             </div>
@@ -118,36 +118,52 @@ const Footer = () => {
           <motion.div variants={containerVariants} className="lg:col-span-1">
             <motion.h3
               variants={itemVariants}
-              className="text-xl font-bold mb-6"
+              className="text-lg sm:text-xl font-bold mb-4 sm:mb-6"
             >
               Contact Us
             </motion.h3>
-            <ul className="space-y-4">
-              <motion.li variants={itemVariants}>
+            <ul className="space-y-3 sm:space-y-4">
+              <motion.li
+                variants={itemVariants}
+                className="text-sm sm:text-base"
+              >
                 India : +91 8069277038
               </motion.li>
-              <motion.li variants={itemVariants}>
+              <motion.li
+                variants={itemVariants}
+                className="text-sm sm:text-base"
+              >
                 UAE : +971 503877199
               </motion.li>
-              <motion.li variants={itemVariants}>Support@wapikon.com</motion.li>
-              <motion.li variants={itemVariants}>sales@wapikon.com</motion.li>
+              <motion.li
+                variants={itemVariants}
+                className="text-sm sm:text-base"
+              >
+                Support@wapikon.com
+              </motion.li>
+              <motion.li
+                variants={itemVariants}
+                className="text-sm sm:text-base"
+              >
+                sales@wapikon.com
+              </motion.li>
             </ul>
           </motion.div>
 
           <motion.div variants={containerVariants} className="lg:col-span-1">
             <motion.h3
               variants={itemVariants}
-              className="text-xl font-bold mb-6"
+              className="text-lg sm:text-xl font-bold mb-4 sm:mb-6"
             >
               Product
             </motion.h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               <motion.li variants={itemVariants}>
                 <motion.a
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 dark:hover:text-green-200 transition-colors inline-block"
+                  className="hover:text-green-300 dark:hover:text-green-200 transition-colors inline-block text-sm sm:text-base"
                 >
                   Pricing
                 </motion.a>
@@ -157,7 +173,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   No Code Chatbots
                 </motion.a>
@@ -167,7 +183,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Shopify & WooCommerce
                 </motion.a>
@@ -177,7 +193,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   WhatsApp Business API
                 </motion.a>
@@ -188,17 +204,17 @@ const Footer = () => {
           <motion.div variants={containerVariants} className="lg:col-span-1">
             <motion.h3
               variants={itemVariants}
-              className="text-xl font-bold mb-6"
+              className="text-lg sm:text-xl font-bold mb-4 sm:mb-6"
             >
               Company/Legal
             </motion.h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               <motion.li variants={itemVariants}>
                 <motion.a
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Contact Us
                 </motion.a>
@@ -208,7 +224,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Privacy Policy
                 </motion.a>
@@ -218,7 +234,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Terms & Conditions
                 </motion.a>
@@ -228,7 +244,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Refund Policy
                 </motion.a>
@@ -239,17 +255,17 @@ const Footer = () => {
           <motion.div variants={containerVariants} className="lg:col-span-1">
             <motion.h3
               variants={itemVariants}
-              className="text-xl font-bold mb-6"
+              className="text-lg sm:text-xl font-bold mb-4 sm:mb-6"
             >
               Follow Us
             </motion.h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               <motion.li variants={itemVariants}>
                 <motion.a
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Facebook
                 </motion.a>
@@ -259,7 +275,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   LinkedIn
                 </motion.a>
@@ -269,7 +285,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Instagram
                 </motion.a>
@@ -279,7 +295,7 @@ const Footer = () => {
                   href="#"
                   whileHover="hover"
                   variants={linkHoverVariants}
-                  className="hover:text-green-300 transition-colors inline-block"
+                  className="hover:text-green-300 transition-colors inline-block text-sm sm:text-base"
                 >
                   Youtube
                 </motion.a>
@@ -290,12 +306,12 @@ const Footer = () => {
 
         <motion.div
           variants={itemVariants}
-          className="border-t border-green-800 dark:border-green-700 my-6"
+          className="border-t border-green-800 dark:border-green-700 my-4 sm:my-6"
         ></motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="text-center text-sm mb-8"
+          className="text-center text-xs sm:text-sm mb-6 sm:mb-8"
         >
           <p className="mb-4">
             Globally Served: India | Singapore | Indonesia | Brazil | UAE |
@@ -305,7 +321,7 @@ const Footer = () => {
 
         <motion.div
           variants={itemVariants}
-          className="text-center text-sm text-gray-300 dark:text-gray-400 mb-8"
+          className="text-center text-xs sm:text-sm text-gray-300 dark:text-gray-400 mb-6 sm:mb-8"
         >
           <p>
             All third-party logos and trademarks, including Meta, Google Sheets,
@@ -317,13 +333,13 @@ const Footer = () => {
 
         <motion.div
           variants={itemVariants}
-          className="border-t border-green-800 dark:border-green-800 my-6"
+          className="border-t border-green-800 dark:border-green-800 my-4 sm:my-6"
         ></motion.div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center">
           <motion.div
             variants={itemVariants}
-            className="text-sm dark:text-gray-300"
+            className="text-xs sm:text-sm dark:text-gray-300 mb-4 sm:mb-0"
           >
             © 2025 Wapikon by{" "}
             <span className="text-green-400 dark:text-green-300">
@@ -338,7 +354,7 @@ const Footer = () => {
             variants={floatVariants}
             whileHover={{ scale: 1.1 }}
             onClick={scrollToTop}
-            className="bg-white dark:bg-gray-700 text-green-900 dark:text-green-400 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors mt-4 md:mt-0"
+            className="bg-white dark:bg-gray-700 text-green-900 dark:text-green-400 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
           >
             <ChevronUp size={20} />
           </motion.button>
