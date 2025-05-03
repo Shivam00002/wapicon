@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Shield, ChevronDown, Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import LanguageSelector from "./Language";
 import dayLogo from "./logo/dayLogo.png";
 import nightLogo from "./logo/nightLogo.png";
@@ -10,6 +11,9 @@ const Navbar = () => {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+
+  const dayLogoRef = useRef(dayLogo);
+  const nightLogoRef = useRef(nightLogo);
 
   const featureItems = [
     "No Code Chatbots",
@@ -40,8 +44,11 @@ const Navbar = () => {
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      document.documentElement.classList.toggle("dark");
+      return newMode;
+    });
   };
 
   useEffect(() => {
@@ -144,6 +151,8 @@ const Navbar = () => {
     },
   };
 
+  const currentLogo = darkMode ? dayLogoRef.current : nightLogoRef.current;
+
   return (
     <nav
       className={`${
@@ -158,12 +167,15 @@ const Navbar = () => {
               variants={logoVariants}
               initial="initial"
               whileHover="hover"
+              key={darkMode ? "dark" : "light"}
             >
-              <img
-                src={darkMode ? dayLogo : nightLogo}
-                alt="wap!kon logo"
-                className="h-7 md:h-8 w-auto"
-              />
+              <Link to="/" className="flex items-center">
+                <img
+                  src={currentLogo}
+                  alt="Logo"
+                  className="h-7 md:h-8 w-auto"
+                />
+              </Link>
             </motion.div>
           </div>
 
@@ -214,10 +226,8 @@ const Navbar = () => {
                 ))}
               </motion.div>
             </div>
-            <motion.a
-              href="#"
-              variants={navItemVariants}
-              whileHover="hover"
+            <Link
+              to="/pricing"
               className={`${
                 darkMode
                   ? "text-gray-300 hover:text-green-400"
@@ -225,7 +235,7 @@ const Navbar = () => {
               } text-sm lg:text-base`}
             >
               Pricing
-            </motion.a>
+            </Link>
             <motion.a
               href="#"
               variants={navItemVariants}
@@ -458,16 +468,14 @@ const Navbar = () => {
                 )}
               </AnimatePresence>
             </div>
-            <motion.a
-              href="#"
-              whileHover={{ x: 5 }}
-              whileTap={{ scale: 0.98 }}
+            <Link
+              to="/pricing"
               className={`block px-3 py-2 ${
                 darkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
               Pricing
-            </motion.a>
+            </Link>
             <motion.a
               href="#"
               whileHover={{ x: 5 }}

@@ -1,5 +1,7 @@
+import React from 'react';
 import './App.css';
 import './index.css';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BusinessHero from './components/BusinessHero';
 import IntegrationsGrid from './components/Integrations';
@@ -20,32 +22,41 @@ import FeatureGrid from './components/Feachers';
 import PricingHeader from './components/Simple';
 import PricingPlans from './components/PricePlans';
 import Footer from './components/Footer';
+import Pricing from './pages/Pricing';
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <BusinessHero />
-      <IntegrationsGrid />
-      <MessagingHub />
-      <ChatbotBuilder />
-      <AIChatbotWhatsApp />
-      <CRMChatbox />
-      <ECommerceWhatsApp />
-      <FlowsForms />
-      <WhatsAppAds />
-      <CatalogsPayments />
-      <WhatsAppApiUI />
-      <GreenTick />
-      <DashboardImg />
-      <FeatureCards />
-      <GetStart />
-      <FeatureGrid />
-      <PricingHeader />
-      <PricingPlans />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <BusinessHero />
+              <IntegrationsGrid />
+              <MessagingHub />
+              <ChatbotBuilder />
+              <AIChatbotWhatsApp />
+              <CRMChatbox />
+              <ECommerceWhatsApp />
+              <FlowsForms />
+              <WhatsAppAds />
+              <CatalogsPayments />
+              <WhatsAppApiUI />
+              <GreenTick />
+              <DashboardImg />
+              <FeatureCards />
+              <GetStart />
+              <FeatureGrid />
+              <PricingHeader />
+              <PricingPlans />
+            </>
+          } />
+          <Route path="/pricing" element={<Pricing />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
-
+    </div>
   );
 }
 
