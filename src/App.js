@@ -23,6 +23,7 @@ import PricingHeader from './components/Simple';
 import PricingPlans from './components/PricePlans';
 import Footer from './components/Footer';
 import Pricing from './pages/Pricing';
+import ContactPage from './pages/contact/ContactPage';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             </>
           } />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />

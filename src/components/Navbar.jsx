@@ -237,7 +237,7 @@ const Navbar = () => {
               Pricing
             </Link>
             <motion.a
-              href="#"
+              href="/contact"
               variants={navItemVariants}
               whileHover="hover"
               className={`${
@@ -477,13 +477,15 @@ const Navbar = () => {
               Pricing
             </Link>
             <motion.a
-              href="#"
+              href="/contact"
               whileHover={{ x: 5 }}
               whileTap={{ scale: 0.98 }}
               className={`block px-3 py-2 ${
                 darkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
+        
+
               Contact
             </motion.a>
             <div className="block">
