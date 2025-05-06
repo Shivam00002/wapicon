@@ -177,6 +177,7 @@ const GlobalPresence = () => {
                 </motion.a>
               </div>
             </motion.div>
+            
           ))}
         </div>
 
