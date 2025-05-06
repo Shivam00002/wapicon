@@ -23,11 +23,13 @@ const Navbar = () => {
     "WhatsApp Flows",
   ];
 
-  const resourceItems = [
-    "Tutorials",
-    "Knowledge Base",
-    "Create Support Ticket",
-  ];
+  const resourcePaths = {
+    "Tutorials": "/tutorials",
+    "Knowledge Base": "/knowledge-base",
+    "Create Support Ticket": "/submit-ticket"
+  };
+
+  const resourceItems = Object.keys(resourcePaths);
 
   const toggleFeatures = () => {
     setFeaturesOpen(!featuresOpen);
@@ -276,21 +278,24 @@ const Navbar = () => {
                 variants={dropdownVariants}
               >
                 {resourceItems.map((item, index) => (
-                  <motion.a
+                  <Link
                     key={index}
-                    href="#"
+                    to={resourcePaths[item]}
                     className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
                       darkMode
                         ? "text-gray-300 hover:text-green-400"
                         : "text-gray-800 hover:text-green-500"
                     }`}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
-                    whileHover={{ x: 5 }}
                   >
-                    {item}
-                  </motion.a>
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      {item}
+                    </motion.div>
+                  </Link>
                 ))}
               </motion.div>
             </div>
@@ -484,8 +489,6 @@ const Navbar = () => {
                 darkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
-        
-
               Contact
             </motion.a>
             <div className="block">
@@ -514,21 +517,28 @@ const Navbar = () => {
                     className="pl-4 mt-1 space-y-1"
                   >
                     {resourceItems.map((item, index) => (
-                      <motion.a
+                      <Link
                         key={index}
-                        href="#"
+                        to={resourcePaths[item]}
                         className={`block px-3 py-2 text-base ${
                           darkMode
                             ? "text-gray-400 hover:text-green-400"
                             : "text-gray-800 hover:text-green-500"
                         }`}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05, duration: 0.3 }}
-                        whileHover={{ x: 5 }}
+                        onClick={() => {
+                          setResourcesOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
-                        {item}
-                      </motion.a>
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05, duration: 0.3 }}
+                          whileHover={{ x: 5 }}
+                        >
+                          {item}
+                        </motion.div>
+                      </Link>
                     ))}
                   </motion.div>
                 )}

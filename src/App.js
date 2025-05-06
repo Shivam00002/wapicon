@@ -24,6 +24,9 @@ import PricingPlans from './components/PricePlans';
 import Footer from './components/Footer';
 import Pricing from './pages/Pricing';
 import ContactPage from './pages/contact/ContactPage';
+import KnowledgeBase from './pages/knowledge-base/Knowledge';
+
+
 
 function App() {
   return (
@@ -55,6 +58,8 @@ function App() {
           } />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/knowledge-base" element={<KnowledgeBase />} />
+          <Route path="/whatsapp-business-api/:articleSlug" element={<ArticlePage/>} />
         </Routes>
       </main>
       <Footer />
