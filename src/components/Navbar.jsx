@@ -24,9 +24,9 @@ const Navbar = () => {
   ];
 
   const resourcePaths = {
-    "Tutorials": "/tutorials",
+    Tutorials: "https://www.youtube.com/@wapikon",
     "Knowledge Base": "/knowledge-base",
-    "Create Support Ticket": "/submit-ticket"
+    "Create Support Ticket": "/submit-ticket",
   };
 
   const resourceItems = Object.keys(resourcePaths);
@@ -277,26 +277,33 @@ const Navbar = () => {
                 exit="exit"
                 variants={dropdownVariants}
               >
-                {resourceItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={resourcePaths[item]}
-                    className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
-                      darkMode
-                        ? "text-gray-300 hover:text-green-400"
-                        : "text-gray-800 hover:text-green-500"
-                    }`}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.3 }}
-                      whileHover={{ x: 5 }}
+                {resourceItems.map((item, index) => {
+                  const itemPath = resourcePaths[item];
+                  const isExternal = item === "Tutorials";
+
+                  return (
+                    <a
+                      key={index}
+                      href={itemPath}
+                      target={isExternal ? "_blank" : "_self"}
+                      rel={isExternal ? "noopener noreferrer" : ""}
+                      className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
+                        darkMode
+                          ? "text-gray-300 hover:text-green-400"
+                          : "text-gray-800 hover:text-green-500"
+                      }`}
                     >
-                      {item}
-                    </motion.div>
-                  </Link>
-                ))}
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {item}
+                      </motion.div>
+                    </a>
+                  );
+                })}
               </motion.div>
             </div>
           </div>
@@ -516,30 +523,37 @@ const Navbar = () => {
                     variants={dropdownVariants}
                     className="pl-4 mt-1 space-y-1"
                   >
-                    {resourceItems.map((item, index) => (
-                      <Link
-                        key={index}
-                        to={resourcePaths[item]}
-                        className={`block px-3 py-2 text-base ${
-                          darkMode
-                            ? "text-gray-400 hover:text-green-400"
-                            : "text-gray-800 hover:text-green-500"
-                        }`}
-                        onClick={() => {
-                          setResourcesOpen(false);
-                          setMobileMenuOpen(false);
-                        }}
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05, duration: 0.3 }}
-                          whileHover={{ x: 5 }}
+                    {resourceItems.map((item, index) => {
+                      const itemPath = resourcePaths[item];
+                      const isExternal = item === "Tutorials";
+
+                      return (
+                        <a
+                          key={index}
+                          href={itemPath}
+                          target={isExternal ? "_blank" : "_self"}
+                          rel={isExternal ? "noopener noreferrer" : ""}
+                          className={`block px-3 py-2 text-base ${
+                            darkMode
+                              ? "text-gray-400 hover:text-green-400"
+                              : "text-gray-800 hover:text-green-500"
+                          }`}
+                          onClick={() => {
+                            setResourcesOpen(false);
+                            setMobileMenuOpen(false);
+                          }}
                         >
-                          {item}
-                        </motion.div>
-                      </Link>
-                    ))}
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05, duration: 0.3 }}
+                            whileHover={{ x: 5 }}
+                          >
+                            {item}
+                          </motion.div>
+                        </a>
+                      );
+                    })}
                   </motion.div>
                 )}
               </AnimatePresence>
