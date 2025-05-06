@@ -25,6 +25,7 @@ import Footer from './components/Footer';
 import Pricing from './pages/Pricing';
 import ContactPage from './pages/contact/ContactPage';
 import KnowledgeBase from './pages/knowledge-base/Knowledge';
+import ArticlePage from './pages/knowledge-base/Article';
 
 
 

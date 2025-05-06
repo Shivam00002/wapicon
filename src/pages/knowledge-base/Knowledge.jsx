@@ -49,7 +49,7 @@ const KnowledgeBase = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans">
+    <div className="min-h-screen w-full mt-10 bg-gray-50 dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans">
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 flex items-center text-sm text-gray-600 dark:text-gray-400">
           <Link
