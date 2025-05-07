@@ -26,6 +26,7 @@ import Pricing from './pages/Pricing';
 import ContactPage from './pages/contact/ContactPage';
 import KnowledgeBase from './pages/knowledge-base/Knowledge';
 import ArticlePage from './pages/knowledge-base/Article';
+import NoCodeChatboat from './pages/nocode-chatbots/NocodeHero';
 
 
 
@@ -61,6 +62,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
           <Route path="/whatsapp-business-api/:articleSlug" element={<ArticlePage/>} />
+          <Route path="/no-code-chatbots" element={<NoCodeChatboat/>} />
         </Routes>
       </main>
       <Footer />
