@@ -27,6 +27,7 @@ import ContactPage from './pages/contact/ContactPage';
 import KnowledgeBase from './pages/knowledge-base/Knowledge';
 import ArticlePage from './pages/knowledge-base/Article';
 import NoCodeChatboat from './pages/nocode-chatbots/Home';
+import EcommerceHero from './pages/shopify-integrations/Home';
 
 
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
           <Route path="/whatsapp-business-api/:articleSlug" element={<ArticlePage/>} />
           <Route path="/no-code-chatbots" element={<NoCodeChatboat/>} />
+          <Route path="/shopify-woocomerce-integrations" element={<EcommerceHero/>} />
         </Routes>
       </main>
       <Footer />

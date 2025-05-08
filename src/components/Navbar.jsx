@@ -16,11 +16,11 @@ const Navbar = () => {
   const nightLogoRef = useRef(nightLogo);
 
   const featureItems = [
-    "No Code Chatbots",
-    "Shopify/Woocomerce Integrations",
-    "WhatsApp Business API",
-    "WhatsApp Catalogs",
-    "WhatsApp Flows",
+    { name: "No Code Chatbots", path: "/no-code-chatbots" },
+    { name: "Shopify/Woocomerce Integrations", path: "/shopify-woocomerce-integrations" },
+    { name: "WhatsApp Business API", path: "#" },
+    { name: "WhatsApp Catalogs", path: "#" },
+    { name: "WhatsApp Flows", path: "#" },
   ];
 
   const resourcePaths = {
@@ -210,21 +210,42 @@ const Navbar = () => {
                 variants={dropdownVariants}
               >
                 {featureItems.map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
-                      darkMode
-                        ? "text-gray-300 hover:text-green-400"
-                        : "text-gray-800 hover:text-green-500"
-                    }`}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    {item}
-                  </motion.a>
+                  <motion.div key={index}>
+                    {item.path === "#" ? (
+                      <motion.a
+                        href={item.path}
+                        className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
+                          darkMode
+                            ? "text-gray-300 hover:text-green-400"
+                            : "text-gray-800 hover:text-green-500"
+                        }`}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {item.name}
+                      </motion.a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className={`block px-4 md:px-6 py-1 text-sm md:text-base ${
+                          darkMode
+                            ? "text-gray-300 hover:text-green-400"
+                            : "text-gray-800 hover:text-green-500"
+                        }`}
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05, duration: 0.3 }}
+                          whileHover={{ x: 5 }}
+                        >
+                          {item.name}
+                        </motion.div>
+                      </Link>
+                    )}
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
@@ -460,21 +481,53 @@ const Navbar = () => {
                     className="pl-4 mt-1 space-y-1"
                   >
                     {featureItems.map((item, index) => (
-                      <motion.a
-                        key={index}
-                        href="#"
-                        className={`block px-3 py-2 text-base ${
-                          darkMode
-                            ? "text-gray-400 hover:text-green-400"
-                            : "text-gray-800 hover:text-green-500"
-                        }`}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05, duration: 0.3 }}
-                        whileHover={{ x: 5 }}
-                      >
-                        {item}
-                      </motion.a>
+                      <motion.div key={index}>
+                        {item.path === "#" ? (
+                          <motion.a
+                            href={item.path}
+                            className={`block px-3 py-2 text-base ${
+                              darkMode
+                                ? "text-gray-400 hover:text-green-400"
+                                : "text-gray-800 hover:text-green-500"
+                            }`}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05, duration: 0.3 }}
+                            whileHover={{ x: 5 }}
+                            onClick={() => {
+                              setFeaturesOpen(false);
+                              setMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.name}
+                          </motion.a>
+                        ) : (
+                          <Link
+                            to={item.path}
+                            className={`block px-3 py-2 text-base ${
+                              darkMode
+                                ? "text-gray-400 hover:text-green-400"
+                                : "text-gray-800 hover:text-green-500"
+                            }`}
+                            onClick={() => {
+                              setFeaturesOpen(false);
+                              setMobileMenuOpen(false);
+                            }}
+                          >
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{
+                                delay: index * 0.05,
+                                duration: 0.3,
+                              }}
+                              whileHover={{ x: 5 }}
+                            >
+                              {item.name}
+                            </motion.div>
+                          </Link>
+                        )}
+                      </motion.div>
                     ))}
                   </motion.div>
                 )}
