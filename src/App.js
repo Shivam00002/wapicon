@@ -28,6 +28,7 @@ import KnowledgeBase from './pages/knowledge-base/Knowledge';
 import ArticlePage from './pages/knowledge-base/Article';
 import NoCodeChatboat from './pages/nocode-chatbots/Home';
 import EcommerceHero from './pages/shopify-integrations/Home';
+import BusinessAPI from './pages/business-api/Home';
 
 
 
@@ -62,9 +63,10 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
-          <Route path="/whatsapp-business-api/:articleSlug" element={<ArticlePage/>} />
-          <Route path="/no-code-chatbots" element={<NoCodeChatboat/>} />
-          <Route path="/shopify-woocomerce-integrations" element={<EcommerceHero/>} />
+          <Route path="/whatsapp-business-api/:articleSlug" element={<ArticlePage />} />
+          <Route path="/no-code-chatbots" element={<NoCodeChatboat />} />
+          <Route path="/shopify-woocomerce-integrations" element={<EcommerceHero />} />
+          <Route path="/whatsapp-business-api" element={<BusinessAPI />} />
         </Routes>
       </main>
       <Footer />

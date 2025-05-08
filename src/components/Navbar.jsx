@@ -18,7 +18,7 @@ const Navbar = () => {
   const featureItems = [
     { name: "No Code Chatbots", path: "/no-code-chatbots" },
     { name: "Shopify/Woocomerce Integrations", path: "/shopify-woocomerce-integrations" },
-    { name: "WhatsApp Business API", path: "#" },
+    { name: "WhatsApp Business API", path: "/whatsapp-business-api" },
     { name: "WhatsApp Catalogs", path: "#" },
     { name: "WhatsApp Flows", path: "#" },
   ];
