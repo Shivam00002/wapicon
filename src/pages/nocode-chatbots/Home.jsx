@@ -5,6 +5,12 @@ import Automation from "./Automation";
 import BuilderSec from "./BuilderSec";
 import ChatbotTemp from "./ChatbotTemp";
 import Communication from "./Communication";
+import BuildingWtsap from "./Buildingwtsp";
+import ChooseUr from "./ChooseUr";
+import SuccessStories from "./SuccessStories";
+import IntegrationsGrid from "../../components/Integrations";
+import AutomationComp from "./AutomationCmpo";
+import WhatsAppFAQ from "./WtspFaQ";
 
 const NoCodeChatboat = () => {
   const fadeInUp = {
@@ -193,6 +199,12 @@ const NoCodeChatboat = () => {
       <BuilderSec />
       <ChatbotTemp />
       <Communication />
+      <BuildingWtsap />
+      <ChooseUr />
+      <SuccessStories />
+      <IntegrationsGrid />
+      <AutomationComp />
+      <WhatsAppFAQ />
     </div>
   );
 };

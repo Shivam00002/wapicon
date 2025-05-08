@@ -26,7 +26,7 @@ import Pricing from './pages/Pricing';
 import ContactPage from './pages/contact/ContactPage';
 import KnowledgeBase from './pages/knowledge-base/Knowledge';
 import ArticlePage from './pages/knowledge-base/Article';
-import NoCodeChatboat from './pages/nocode-chatbots/NocodeHero';
+import NoCodeChatboat from './pages/nocode-chatbots/Home';
 
 
 
