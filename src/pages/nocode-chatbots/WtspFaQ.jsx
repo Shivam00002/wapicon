@@ -52,25 +52,25 @@ const WhatsAppFAQ = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-gray-50 dark:bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <h2 className="text-4xl  sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Common Questions About WhatsApp Automation
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300">
             Everything you need to know to get started
           </p>
         </motion.div>
 
         <motion.div
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -85,14 +85,14 @@ const WhatsAppFAQ = () => {
           {faqItems.map((item) => (
             <motion.div
               key={item.id}
-              className="mb-6 overflow-hidden"
+              className="mb-4 sm:mb-6 overflow-hidden"
               variants={slideInUp}
             >
-              <div className="w-full text-left py-5 px-6 bg-green-50 dark:bg-green-900/20 rounded-t-lg font-semibold text-gray-900 dark:text-white text-lg">
+              <div className="w-full text-left py-3 sm:py-4 md:py-5 px-4 sm:px-5 md:px-6 bg-green-50 dark:bg-green-900/20 rounded-t-lg font-semibold text-gray-900 dark:text-white text-base sm:text-lg">
                 {item.question}
               </div>
 
-              <div className="py-5 px-6 bg-white dark:bg-gray-800 rounded-b-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              <div className="py-3 sm:py-4 md:py-5 px-4 sm:px-5 md:px-6 bg-white dark:bg-gray-800 rounded-b-lg text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                 {item.answer}
               </div>
             </motion.div>

@@ -64,25 +64,25 @@ const BuildingWtsap = () => {
   ];
 
   return (
-    <div className="w-full bg-[#f7fbf8] dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-[#f7fbf8] dark:bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <h1 className="text-3xl md:text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-6">
             Building Your WhatsApp Chatbot
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Four simple steps to launch your automated WhatsApp assistant
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -95,25 +95,25 @@ const BuildingWtsap = () => {
               variants={fadeInUp}
             >
               <motion.div
-                className="flex items-center justify-center mb-4"
+                className="flex items-center justify-center mb-3 sm:mb-4"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-2xl">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl md:text-2xl">
                   {step.number}
                 </div>
               </motion.div>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 text-center">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3 text-center">
                 {step.title}
               </h3>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 text-center">
                 {step.description}
               </p>
 
               <motion.div
-                className="mt-auto bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+                className="mt-auto bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
                 whileHover={{
                   y: -5,
                   boxShadow:
@@ -131,7 +131,7 @@ const BuildingWtsap = () => {
         </motion.div>
 
         <motion.div
-          className="flex justify-end mt-12"
+          className="flex justify-end mt-8 sm:mt-10 md:mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
@@ -144,7 +144,7 @@ const BuildingWtsap = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-600 dark:text-gray-300"
+              className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

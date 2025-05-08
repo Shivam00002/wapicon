@@ -59,25 +59,25 @@ const ChooseUr = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-gray-50 dark:bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Choose Your Ideal Chatbot Type
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300">
             Different solutions for different business needs
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -86,32 +86,32 @@ const ChooseUr = () => {
           {chatbotTypes.map((type) => (
             <motion.div
               key={type.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-8"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-6 md:p-8"
               variants={fadeIn}
               whileHover={{ y: -5 }}
             >
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center justify-center text-3xl">
+              <div className="mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center justify-center text-2xl sm:text-3xl">
                   {type.icon}
                 </div>
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 {type.title}
               </h3>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-8 text-base">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
                 {type.description}
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {type.features.map((feature, index) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0 mt-0.5">
-                      <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-500 flex items-center justify-center text-white">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3"
+                          className="h-2.5 w-2.5 sm:h-3 sm:w-3"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -123,7 +123,7 @@ const ChooseUr = () => {
                         </svg>
                       </div>
                     </div>
-                    <p className="ml-3 text-gray-600 dark:text-gray-300">
+                    <p className="ml-2.5 sm:ml-3 text-sm sm:text-base text-gray-600 dark:text-gray-300">
                       {feature}
                     </p>
                   </div>
@@ -131,7 +131,7 @@ const ChooseUr = () => {
               </div>
 
               <motion.button
-                className="w-full px-6 py-3 border border-green-500 text-green-600 dark:text-green-400 font-medium rounded-md hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                className="w-full px-4 sm:px-6 py-2 sm:py-3 border border-green-500 text-green-600 dark:text-green-400 font-medium rounded-md hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors text-sm sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

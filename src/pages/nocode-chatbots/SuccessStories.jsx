@@ -64,26 +64,26 @@ const SuccessStories = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-gray-50 dark:bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             WhatsApp Automation Success Stories
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             See how businesses are transforming their customer engagement with
             Wapikon chatbots
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -96,7 +96,7 @@ const SuccessStories = () => {
               variants={fadeInUp}
             >
               <motion.div
-                className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6"
+                className="bg-gray-100 dark:bg-gray-800 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -108,28 +108,28 @@ const SuccessStories = () => {
               </motion.div>
 
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   {study.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-8">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
                   {study.description}
                 </p>
 
-                <div className="grid grid-cols-2 gap-4 mt-6">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
                   {study.metrics.map((metric, index) => (
                     <motion.div
                       key={index}
-                      className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg text-center"
+                      className="bg-green-50 dark:bg-green-900/20 p-3 sm:p-4 rounded-lg text-center"
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.2 + index * 0.1 }}
                       whileHover={{ scale: 1.05 }}
                     >
-                      <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
+                      <div className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
                         {metric.value}
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {metric.label}
                       </div>
                     </motion.div>

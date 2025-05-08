@@ -49,9 +49,9 @@ const BuilderSec = () => {
   ];
 
   return (
-    <div className="w-full bg-[#f7fbf8] dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-[#f7fbf8] dark:bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-10 xl:gap-16">
           <motion.div
             className="w-full lg:w-1/2"
             initial="hidden"
@@ -60,33 +60,33 @@ const BuilderSec = () => {
             variants={staggerContainer}
           >
             <motion.h2
-              className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-10 lg:mb-12"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12"
               variants={fadeInUp}
             >
               Drag-and-Drop Chatbot
-              <br /> Builder
+              <br className="hidden sm:block" /> Builder
             </motion.h2>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="flex gap-4"
+                  className="flex gap-3 sm:gap-4"
                   variants={fadeInUp}
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                       <Check
-                        size={14}
+                        size={12}
                         className="text-green-500 dark:text-green-400"
                       />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                       {feature.description}
                     </p>
                   </div>
@@ -94,15 +94,15 @@ const BuilderSec = () => {
               ))}
             </div>
 
-            <motion.div variants={fadeInUp} className="mt-10">
-              <button className="px-6 py-3 bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white font-medium rounded-md transition-colors">
+            <motion.div variants={fadeInUp} className="mt-8 sm:mt-10">
+              <button className="px-4 sm:px-6 py-2 sm:py-3 bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white font-medium rounded-md transition-colors text-sm sm:text-base">
                 Try Builder Now
               </button>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 mt-8 lg:mt-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{
               opacity: 1,
