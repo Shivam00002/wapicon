@@ -34,25 +34,25 @@ const EcommerceHero = () => {
   };
 
   return (
-    <div className="w-full mt-10 bg-green-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full mt-10 sm:mt-8 md:mt-10 bg-green-50 dark:bg-gray-900 py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInLeft}
           >
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 md:mb-10">
               <motion.div
-                className="bg-white dark:bg-gray-800 px-4 py-2 rounded-full flex items-center"
+                className="bg-white dark:bg-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex items-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-green-600 dark:text-green-400 font-medium flex items-center">
+                <span className="text-green-600 dark:text-green-400 font-medium flex items-center text-xs sm:text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2"
+                    className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -63,14 +63,14 @@ const EcommerceHero = () => {
               </motion.div>
 
               <motion.div
-                className="bg-white dark:bg-gray-800 px-4 py-2 rounded-full flex items-center"
+                className="bg-white dark:bg-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex items-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-purple-600 dark:text-purple-400 font-medium flex items-center">
+                <span className="text-purple-600 dark:text-purple-400 font-medium flex items-center text-xs sm:text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2"
+                    className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -81,14 +81,14 @@ const EcommerceHero = () => {
               </motion.div>
 
               <motion.div
-                className="bg-white dark:bg-gray-800 px-4 py-2 rounded-full flex items-center"
+                className="bg-white dark:bg-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex items-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-green-600 dark:text-green-400 font-medium flex items-center">
+                <span className="text-green-600 dark:text-green-400 font-medium flex items-center text-xs sm:text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2"
+                    className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -99,31 +99,31 @@ const EcommerceHero = () => {
               </motion.div>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
               <span className="text-gray-900 dark:text-white">Seamless </span>
               <span className="text-green-500 dark:text-green-400">
                 WhatsApp
               </span>
             </h2>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
               <span className="text-green-500 dark:text-green-400">
                 Integration
               </span>
               <span className="text-gray-900 dark:text-white"> with Your</span>
             </h2>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-white">
               E-Commerce Store
             </h2>
 
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
               Connect your WooCommerce or Shopify store to WhatsApp Business and
               transform customer engagement with automated messaging, order
               updates, and personalized support - all in one platform.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <motion.button
-                className="bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300"
+                className="bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-md transition-colors duration-300 text-sm sm:text-base"
                 variants={buttonVariants}
                 initial="initial"
                 whileHover="hover"
@@ -133,7 +133,7 @@ const EcommerceHero = () => {
               </motion.button>
 
               <motion.button
-                className="border border-green-500 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 font-medium py-3 px-8 rounded-md transition-colors duration-300"
+                className="border border-green-500 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-md transition-colors duration-300 text-sm sm:text-base"
                 variants={buttonVariants}
                 initial="initial"
                 whileHover="hover"
@@ -145,7 +145,7 @@ const EcommerceHero = () => {
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="relative mt-6 lg:mt-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -158,16 +158,16 @@ const EcommerceHero = () => {
             />
 
             <motion.div
-              className="absolute top-8 right-8 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-xs"
+              className="absolute top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-lg max-w-[160px] sm:max-w-xs"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0 mr-3">
-                  <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-full">
+                <div className="flex-shrink-0 mr-2 sm:mr-3">
+                  <div className="bg-green-100 dark:bg-green-900/30 p-1.5 sm:p-2 rounded-full">
                     <svg
-                      className="h-5 w-5 text-green-500"
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-green-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -182,10 +182,10 @@ const EcommerceHero = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white">
+                  <h4 className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm md:text-base">
                     Automated Order Updates
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     Keep customers informed at every step
                   </p>
                 </div>
@@ -193,16 +193,16 @@ const EcommerceHero = () => {
             </motion.div>
 
             <motion.div
-              className="absolute bottom-16 right-8 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-xs"
+              className="absolute bottom-10 sm:bottom-12 md:bottom-16 right-4 sm:right-6 md:right-8 bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-lg max-w-[160px] sm:max-w-xs"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0 mr-3">
-                  <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-full">
+                <div className="flex-shrink-0 mr-2 sm:mr-3">
+                  <div className="bg-green-100 dark:bg-green-900/30 p-1.5 sm:p-2 rounded-full">
                     <svg
-                      className="h-5 w-5 text-green-500"
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-green-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -217,10 +217,10 @@ const EcommerceHero = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white">
+                  <h4 className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm md:text-base">
                     Instant Customer Support
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     Resolve issues directly in WhatsApp
                   </p>
                 </div>

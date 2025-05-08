@@ -38,19 +38,19 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 dark:bg-gray-900 py-10 sm:py-14 md:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             See How It Works
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A visual walkthrough of our WhatsApp E-Commerce integration
           </p>
         </motion.div>
@@ -63,7 +63,7 @@ const HowItWorksSection = () => {
           variants={imageReveal}
         >
           <motion.div
-            className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl"
+            className="w-full max-w-[280px] sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl"
             initial="initial"
             animate="animate"
             variants={floatingAnimation}
@@ -71,7 +71,7 @@ const HowItWorksSection = () => {
             <img
               src="https://myoperator.com/blog/wp-content/uploads/2023/06/How-to-Use-WhatsApp-Business-for-E-commerce-V-1-1.png"
               alt="WhatsApp E-Commerce integration with woman using laptop and e-commerce features"
-              className="w-full h-auto"
+              className="w-full h-auto rounded-lg shadow-lg"
             />
           </motion.div>
         </motion.div>
