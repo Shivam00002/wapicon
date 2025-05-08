@@ -15,7 +15,6 @@ import {
 import { Link, useParams, useLocation } from "react-router-dom";
 import useArticleStore from "../../store/articleStore";
 
-
 const ArticlePage = () => {
   const { articleSlug } = useParams();
   const location = useLocation();
@@ -83,11 +82,11 @@ const ArticlePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans flex items-center justify-center">
-        <div className="animate-pulse space-y-6 w-full max-w-4xl">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-          <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
+      <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8 xl:px-16 font-sans flex items-center justify-center">
+        <div className="animate-pulse space-y-4 sm:space-y-6 w-full max-w-4xl">
+          <div className="h-6 sm:h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+          <div className="h-3 sm:h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+          <div className="h-48 sm:h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
         </div>
       </div>
     );
@@ -95,17 +94,17 @@ const ArticlePage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans flex items-center justify-center">
+      <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8 xl:px-16 font-sans flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Article Not Found
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
             The article you're looking for doesn't exist or has been moved.
           </p>
           <Link
             to="/knowledge-base"
-            className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+            className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
           >
             Browse Knowledge Base
           </Link>
@@ -117,30 +116,32 @@ const ArticlePage = () => {
   const tableOfContents = generateTableOfContents();
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-8 md:py-16 px-4 md:px-8 lg:px-16 font-sans">
-      <div className="max-w-4xl mx-auto pt-16 md:pt-20">
-        <div className="mb-6 flex items-center text-sm text-gray-600 dark:text-gray-400">
+    <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8 xl:px-16 font-sans">
+      <div className="max-w-4xl mx-auto pt-10 sm:pt-12 md:pt-16 lg:pt-20">
+        <div className="mb-4 sm:mb-6 flex flex-wrap items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
           <Link
             to="/"
-            className="flex items-center hover:text-green-500 dark:hover:text-green-400"
+            className="flex items-center hover:text-green-500 dark:hover:text-green-400 mb-1 sm:mb-0"
           >
-            <Home size={16} className="mr-2" />
+            <Home size={14} className="mr-1 sm:mr-2" />
             Home
           </Link>
-          <span className="mx-2">›</span>
+          <span className="mx-1 sm:mx-2 mb-1 sm:mb-0">›</span>
           <Link
             to="/knowledge-base"
-            className="hover:text-green-500 dark:hover:text-green-400"
+            className="hover:text-green-500 dark:hover:text-green-400 mb-1 sm:mb-0"
           >
             WhatsApp Business API
           </Link>
-          <span className="mx-2">›</span>
-          <span>{article.title}</span>
+          <span className="mx-1 sm:mx-2 mb-1 sm:mb-0">›</span>
+          <span className="truncate max-w-[200px] sm:max-w-none">
+            {article.title}
+          </span>
         </div>
 
         <motion.div
           ref={titleRef}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{
             opacity: titleInView ? 1 : 0.5,
@@ -148,17 +149,19 @@ const ArticlePage = () => {
           }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             {article.title}
           </h1>
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-              <Clock size={16} className="mr-1" />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+            <div className="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+              <Clock size={14} className="mr-1" />
               <span>Posted on {article.publishDate}</span>
               {article.lastUpdated &&
                 article.lastUpdated !== article.publishDate && (
-                  <span className="ml-3">(Updated: {article.lastUpdated})</span>
+                  <span className="ml-1 sm:ml-3">
+                    (Updated: {article.lastUpdated})
+                  </span>
                 )}
             </div>
 
@@ -168,8 +171,8 @@ const ArticlePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Share size={16} className="mr-1" />
-                <span className="text-sm">Share</span>
+                <Share size={14} className="mr-1" />
+                <span className="text-xs sm:text-sm">Share</span>
               </motion.button>
 
               <motion.button
@@ -177,8 +180,8 @@ const ArticlePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Printer size={16} className="mr-1" />
-                <span className="text-sm">Print</span>
+                <Printer size={14} className="mr-1" />
+                <span className="text-xs sm:text-sm">Print</span>
               </motion.button>
             </div>
           </div>
@@ -186,18 +189,18 @@ const ArticlePage = () => {
 
         {tableOfContents.length > 0 && (
           <motion.div
-            className="md:hidden mb-6"
+            className="md:hidden mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <motion.button
-              className="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border border-gray-200 dark:border-gray-700"
+              className="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg shadow-sm p-3 sm:p-4 border border-gray-200 dark:border-gray-700"
               onClick={() => setShowTableOfContents(!showTableOfContents)}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">
                 Table of Contents
               </span>
               <motion.div
@@ -215,7 +218,7 @@ const ArticlePage = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border border-gray-200 dark:border-gray-700"
+                  className="mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-3 sm:p-4 border border-gray-200 dark:border-gray-700"
                 >
                   <ul className="space-y-2">
                     {tableOfContents.map((item) => (
@@ -225,7 +228,7 @@ const ArticlePage = () => {
                             scrollToSection(item.id);
                             setShowTableOfContents(false);
                           }}
-                          className="text-left text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 w-full"
+                          className="text-left text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 w-full text-sm"
                         >
                           {item.title}
                         </button>
@@ -238,11 +241,11 @@ const ArticlePage = () => {
           </motion.div>
         )}
 
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           {tableOfContents.length > 0 && (
             <motion.div
               ref={tocRef}
-              className="hidden md:block w-64 flex-shrink-0"
+              className="hidden md:block w-56 lg:w-64 flex-shrink-0"
               initial={{ opacity: 0, x: -20 }}
               animate={{
                 opacity: tocInView ? 1 : 0.7,
@@ -250,16 +253,16 @@ const ArticlePage = () => {
               }}
               transition={{ duration: 0.6 }}
             >
-              <div className="sticky top-24 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-700">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+              <div className="sticky top-24 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-5 border border-gray-100 dark:border-gray-700">
+                <h3 className="text-base lg:text-lg font-medium text-gray-900 dark:text-white mb-3 sm:mb-4">
                   In This Article
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {tableOfContents.map((item) => (
                     <li key={item.id}>
                       <motion.button
                         onClick={() => scrollToSection(item.id)}
-                        className="text-left text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 w-full"
+                        className="text-left text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 w-full text-sm"
                         whileHover={{ x: 3 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
@@ -275,7 +278,7 @@ const ArticlePage = () => {
           <div className="flex-1">
             <motion.div
               ref={contentRef}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 md:p-8 border border-gray-100 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 md:p-8 border border-gray-100 dark:border-gray-700"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: contentInView ? 1 : 0.7,
@@ -283,7 +286,7 @@ const ArticlePage = () => {
               }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex justify-end items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
+              <div className="flex justify-end items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 sm:mb-6">
                 <span className="mr-2">
                   {article.ratingCount.helpful} Out of{" "}
                   {article.ratingCount.total} Found Helpful
@@ -301,7 +304,7 @@ const ArticlePage = () => {
                     aria-label="Mark as helpful"
                     onClick={() => handleRating(true)}
                   >
-                    <ThumbsUp size={16} />
+                    <ThumbsUp size={14} className="sm:w-4 sm:h-4" />
                   </motion.button>
 
                   <motion.button
@@ -316,12 +319,12 @@ const ArticlePage = () => {
                     aria-label="Mark as not helpful"
                     onClick={() => handleRating(false)}
                   >
-                    <ThumbsDown size={16} />
+                    <ThumbsDown size={14} className="sm:w-4 sm:h-4" />
                   </motion.button>
                 </div>
               </div>
 
-              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300">
+              <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300">
                 {article.content.map((section, index) => {
                   if (section.type === "paragraph") {
                     return (
@@ -349,7 +352,7 @@ const ArticlePage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.05 }}
-                        className="scroll-mt-24"
+                        className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24"
                       >
                         <HeadingTag>{section.content}</HeadingTag>
                       </motion.div>
@@ -388,7 +391,7 @@ const ArticlePage = () => {
 
             <motion.div
               ref={relatedRef}
-              className="mt-10"
+              className="mt-6 sm:mt-8 md:mt-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: relatedInView ? 1 : 0.5,
@@ -396,26 +399,26 @@ const ArticlePage = () => {
               }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Related Articles
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                 {article.relatedArticles.map((relatedArticle, index) => (
                   <motion.div key={relatedArticle.id}>
                     <Link
                       to={`/whatsapp-business-api/${relatedArticle.slug}`}
-                      className="block bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border border-gray-100 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500"
+                      className="block bg-white dark:bg-gray-800 rounded-lg shadow-sm p-3 sm:p-4 border border-gray-100 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.4 }}
                       whileHover={{
-                        y: -5,
+                        y: -3,
                         boxShadow:
                           "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                       }}
                     >
-                      <h3 className="text-gray-900 dark:text-white font-medium">
+                      <h3 className="text-gray-900 dark:text-white font-medium text-sm sm:text-base">
                         {relatedArticle.title}
                       </h3>
                     </Link>
@@ -426,7 +429,7 @@ const ArticlePage = () => {
 
             <motion.div
               ref={feedbackRef}
-              className="mt-10 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700"
+              className="mt-6 sm:mt-8 md:mt-10 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 border border-gray-100 dark:border-gray-700"
               initial={{ opacity: 0, y: 30 }}
               animate={{
                 opacity: feedbackInView ? 1 : 0,
@@ -434,13 +437,13 @@ const ArticlePage = () => {
               }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Was this article helpful?
               </h2>
 
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                 <motion.button
-                  className={`flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors ${
+                  className={`flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
                     helpfulRating === true ? "bg-green-600" : ""
                   }`}
                   whileHover={{ scale: 1.05 }}
@@ -448,12 +451,12 @@ const ArticlePage = () => {
                   onClick={() => handleRating(true)}
                   disabled={helpfulRating !== null}
                 >
-                  <ThumbsUp size={16} className="mr-2" />
+                  <ThumbsUp size={14} className="mr-2" />
                   Yes, it was helpful
                 </motion.button>
 
                 <motion.button
-                  className={`flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors ${
+                  className={`flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
                     helpfulRating === false
                       ? "bg-gray-300 dark:bg-gray-600"
                       : ""
@@ -463,7 +466,7 @@ const ArticlePage = () => {
                   onClick={() => handleRating(false)}
                   disabled={helpfulRating !== null}
                 >
-                  <ThumbsDown size={16} className="mr-2" />
+                  <ThumbsDown size={14} className="mr-2" />
                   No, I need more help
                 </motion.button>
               </div>
@@ -477,18 +480,18 @@ const ArticlePage = () => {
                 >
                   <Link
                     to="/submit-ticket"
-                    className="text-green-500 hover:text-green-600 dark:hover:text-green-400 font-medium"
+                    className="text-green-500 hover:text-green-600 dark:hover:text-green-400 font-medium text-sm sm:text-base"
                   >
                     Submit a support ticket
                   </Link>
-                  <span className="text-gray-500 dark:text-gray-400 ml-2">
+                  <span className="text-gray-500 dark:text-gray-400 ml-2 text-sm sm:text-base">
                     and our team will help you directly.
                   </span>
                 </motion.div>
               )}
             </motion.div>
 
-            <div className="mt-10 flex justify-between">
+            <div className="mt-6 sm:mt-8 md:mt-10 flex justify-between text-sm sm:text-base">
               {article.prev ? (
                 <motion.div>
                   <Link
@@ -497,8 +500,10 @@ const ArticlePage = () => {
                     whileHover={{ x: -5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    <ArrowLeft size={16} className="mr-1" />
-                    Previous: {article.prev.title}
+                    <ArrowLeft size={14} className="mr-1" />
+                    <span className="truncate max-w-[120px] sm:max-w-[200px]">
+                      Previous: {article.prev.title}
+                    </span>
                   </Link>
                 </motion.div>
               ) : (
@@ -513,8 +518,10 @@ const ArticlePage = () => {
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    {article.next.title}: Next
-                    <ArrowRight size={16} className="ml-1" />
+                    <span className="truncate max-w-[120px] sm:max-w-[200px]">
+                      {article.next.title}: Next
+                    </span>
+                    <ArrowRight size={14} className="ml-1" />
                   </Link>
                 </motion.div>
               ) : (
@@ -524,10 +531,10 @@ const ArticlePage = () => {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-10 sm:mt-12 md:mt-16 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
           <div>Copyright © 2025 All Rights Reserved.</div>
 
-          <div className="mt-4 md:mt-0 flex items-center space-x-4">
+          <div className="mt-3 md:mt-0 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/privacy-policy"
               className="hover:text-green-500 dark:hover:text-green-400"
@@ -545,7 +552,7 @@ const ArticlePage = () => {
               <motion.button whileHover={{ y: -2 }} className="text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
+                  className="h-3 w-3 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
