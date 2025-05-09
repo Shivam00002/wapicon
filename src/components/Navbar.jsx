@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: "No Code Chatbots", path: "/no-code-chatbots" },
     { name: "Shopify/Woocomerce Integrations", path: "/shopify-woocomerce-integrations" },
     { name: "WhatsApp Business API", path: "/whatsapp-business-api" },
-    { name: "WhatsApp Catalogs", path: "#" },
+    { name: "WhatsApp Catalogs", path: "/whatsapp-catalogs" },
     { name: "WhatsApp Flows", path: "#" },
   ];
 

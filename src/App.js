@@ -29,6 +29,7 @@ import ArticlePage from './pages/knowledge-base/Article';
 import NoCodeChatboat from './pages/nocode-chatbots/Home';
 import EcommerceHero from './pages/shopify-integrations/Home';
 import BusinessAPI from './pages/business-api/Home';
+import WhatsAppCatalog from './pages/whatsapp-catalogs/Home';
 
 
 
@@ -67,6 +68,7 @@ function App() {
           <Route path="/no-code-chatbots" element={<NoCodeChatboat />} />
           <Route path="/shopify-woocomerce-integrations" element={<EcommerceHero />} />
           <Route path="/whatsapp-business-api" element={<BusinessAPI />} />
+          <Route path="/whatsapp-catalogs" element={<WhatsAppCatalog />} />
         </Routes>
       </main>
       <Footer />
