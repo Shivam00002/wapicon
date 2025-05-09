@@ -20,7 +20,7 @@ const Navbar = () => {
     { name: "Shopify/Woocomerce Integrations", path: "/shopify-woocomerce-integrations" },
     { name: "WhatsApp Business API", path: "/whatsapp-business-api" },
     { name: "WhatsApp Catalogs", path: "/whatsapp-catalogs" },
-    { name: "WhatsApp Flows", path: "#" },
+    { name: "WhatsApp Flows", path: "/whatsapp-flows" },
   ];
 
   const resourcePaths = {
