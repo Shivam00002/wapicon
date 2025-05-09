@@ -225,7 +225,6 @@ const Enterprise = () => {
                 className="w-full h-auto rounded-lg shadow-lg"
               />
 
-              {/* Hide elements on small screens, show on larger screens */}
               <motion.div
                 className="absolute -top-8 -left-8 bg-white rounded-lg shadow-md p-3 w-36 hidden lg:block"
                 initial={{ opacity: 0, scale: 0.8 }}

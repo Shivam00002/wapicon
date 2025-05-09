@@ -3,7 +3,7 @@ import {
   CheckCircle,
   PhoneCall,
   MessageCircle,
-  ChevronRight,
+
 } from "lucide-react";
 import { motion } from "framer-motion";
 import FAQSec from "./FAQSec";

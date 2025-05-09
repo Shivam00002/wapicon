@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+
 
 const SimpleAPi = () => {
   const containerVariants = {
