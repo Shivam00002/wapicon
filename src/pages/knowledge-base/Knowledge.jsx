@@ -50,7 +50,7 @@ const KnowledgeBase = () => {
 
   return (
     <div className="min-h-screen w-full mt-5 sm:mt-8 md:mt-10 bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-16 font-sans">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-4 sm:mb-6 flex flex-wrap items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
           <Link
             to="/"

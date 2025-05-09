@@ -83,7 +83,7 @@ const ArticlePage = () => {
   if (loading) {
     return (
       <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8 xl:px-16 font-sans flex items-center justify-center">
-        <div className="animate-pulse space-y-4 sm:space-y-6 w-full max-w-4xl">
+        <div className="animate-pulse space-y-4 sm:space-y-6 w-full md:max-w-7xl">
           <div className="h-6 sm:h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
           <div className="h-3 sm:h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
           <div className="h-48 sm:h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
@@ -117,7 +117,7 @@ const ArticlePage = () => {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 py-6 sm:py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8 xl:px-16 font-sans">
-      <div className="max-w-4xl mx-auto pt-10 sm:pt-12 md:pt-16 lg:pt-20">
+      <div className="max-w-7xl mx-auto pt-10 sm:pt-12 md:pt-16 lg:pt-20">
         <div className="mb-4 sm:mb-6 flex flex-wrap items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
           <Link
             to="/"

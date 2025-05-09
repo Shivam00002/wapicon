@@ -26,7 +26,7 @@ const Navbar = () => {
   const resourcePaths = {
     Tutorials: "https://www.youtube.com/@wapikon",
     "Knowledge Base": "/knowledge-base",
-    "Create Support Ticket": "/submit-ticket",
+    "Create Support Ticket": "https://help.wapikon.com/login",
   };
 
   const resourceItems = Object.keys(resourcePaths);
